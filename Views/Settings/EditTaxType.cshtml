@@ -1,0 +1,117 @@
+@model GramKar.Models.Entities.TaxType
+@{
+    ViewData["Title"] = Loc["EditTaxBtn"] + " - " + Loc.LocalizeTaxName(Model.Name);
+}
+
+<div style="max-width: 650px; margin: 0 auto;">
+    <div style="margin-bottom: 20px;">
+        <a asp-action="TaxTypes" class="btn-brutal btn-sm-brutal">
+            ← @Loc["Back"]
+        </a>
+    </div>
+
+    <div class="card-brutal" style="padding: 32px;">
+        <h2 style="font-size: 28px; margin-bottom: 8px;">⚙️ @Loc["EditTaxBtn"]</h2>
+        <p style="color: var(--muted); font-size: 16px; margin-bottom: 24px;">
+            @Loc["EditTaxSubtitle"]
+        </p>
+
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div class="toast-brutal toast-error">
+                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    <div>@error.ErrorMessage</div>
+                }
+            </div>
+        }
+
+        <form asp-action="EditTaxType" method="post">
+            @Html.AntiForgeryToken()
+            <input type="hidden" asp-for="TaxTypeId" />
+
+            <div class="form-group-brutal">
+                <label asp-for="Name" class="form-label-brutal">@Loc["TaxNameCol"] *</label>
+                <input asp-for="Name" class="form-input-brutal" required />
+            </div>
+
+            <div class="grid-2">
+                <div class="form-group-brutal">
+                    <label asp-for="DefaultAmount" class="form-label-brutal">@Loc["AnnualAmountLabel"] (₹) *</label>
+                    <input asp-for="DefaultAmount" type="number" step="1" class="form-input-brutal" required />
+                </div>
+
+                <div class="form-group-brutal">
+                    <label asp-for="AppliesTo" class="form-label-brutal">@Loc["AppliesToLabel"]</label>
+                    <select asp-for="AppliesTo" class="form-select-brutal">
+                        <option value="All">@Loc["AppliesAll"]</option>
+                        <option value="Water">@Loc["AppliesWater"]</option>
+                        <option value="Shop">@Loc["AppliesShop"]</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="form-group-brutal">
+                    <label class="form-label-brutal">@Loc["DueDayLabel"]</label>
+                    <input asp-for="DueDay" type="number" min="1" max="31" class="form-input-brutal" required />
+                </div>
+
+                <div class="form-group-brutal">
+                    <label class="form-label-brutal">@Loc["DueMonthLabel"]</label>
+                    <select asp-for="DueMonth" class="form-select-brutal">
+                        <option value="1">@Loc["Month1"] (1)</option>
+                        <option value="2">@Loc["Month2"] (2)</option>
+                        <option value="3">@Loc["Month3"] (3)</option>
+                        <option value="4">@Loc["Month4"] (4)</option>
+                        <option value="5">@Loc["Month5"] (5)</option>
+                        <option value="6">@Loc["Month6"] (6)</option>
+                        <option value="7">@Loc["Month7"] (7)</option>
+                        <option value="8">@Loc["Month8"] (8)</option>
+                        <option value="9">@Loc["Month9"] (9)</option>
+                        <option value="10">@Loc["Month10"] (10)</option>
+                        <option value="11">@Loc["Month11"] (11)</option>
+                        <option value="12">@Loc["Month12"] (12)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="form-group-brutal">
+                    <label asp-for="LateFeeType" class="form-label-brutal">@Loc["LateFeeMethodLabel"]</label>
+                    <select asp-for="LateFeeType" class="form-select-brutal">
+                        <option value="Percent">@Loc["MethodPercent"]</option>
+                        <option value="Flat">@Loc["MethodFlat"]</option>
+                    </select>
+                </div>
+
+                <div class="form-group-brutal">
+                    <label asp-for="LateFeeValue" class="form-label-brutal">@Loc["LateFeeRateLabel"]</label>
+                    <input asp-for="LateFeeValue" type="number" step="0.1" class="form-input-brutal" required />
+                </div>
+            </div>
+
+            <div class="form-group-brutal">
+                <label asp-for="MaxLateFeePercent" class="form-label-brutal">@Loc["MaxCapLabel"]</label>
+                <input asp-for="MaxLateFeePercent" type="number" class="form-input-brutal" placeholder="50" />
+                <div style="font-size: 13px; color: var(--muted); margin-top: 4px;">@Loc["MaxCapHint"]</div>
+            </div>
+
+            <div class="form-group-brutal">
+                <label class="form-label-brutal">@Loc["Status"]</label>
+                <label style="font-weight: 700; cursor: pointer;">
+                    <input type="checkbox" asp-for="IsActive" /> @Loc["Active"]
+                </label>
+            </div>
+
+            <div style="display: flex; gap: 14px; margin-top: 24px;">
+                <button type="submit" class="btn-brutal btn-success-brutal" style="flex: 1;">
+                    @Loc["Save"]
+                </button>
+                <a asp-action="TaxTypes" class="btn-brutal" style="flex: 1;">
+                    @Loc["Cancel"]
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

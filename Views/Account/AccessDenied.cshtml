@@ -1,0 +1,17 @@
+@{
+    ViewData["Title"] = Loc["AccessDeniedTitle"];
+}
+
+<div style="max-width: 580px; margin: 40px auto; text-align: center;">
+    <div class="card-brutal" style="padding: 40px 30px;">
+        <div style="font-size: 60px; margin-bottom: 14px;">🚫</div>
+        
+        <h2 style="font-size: 28px; color: var(--danger); margin-bottom: 12px;">@Loc["AccessDeniedTitle"]</h2>
+        <p style="font-size: 18px; color: var(--muted); margin-bottom: 24px;">
+            @Loc["AccessDeniedDesc"]
+        </p>
+        <a asp-controller="Dashboard" asp-action="Index" class="btn-brutal btn-primary-brutal">
+            ← @Loc["BackToDashboard"]
+        </a>
+    </div>
+</div>

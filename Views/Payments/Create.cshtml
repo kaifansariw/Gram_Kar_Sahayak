@@ -1,0 +1,282 @@
+@model GramKar.Models.ViewModels.PaymentCreateViewModel
+@{
+    ViewData["Title"] = Loc["RecordPayment"];
+}
+
+<div style="margin-bottom: 24px;">
+    <h1 style="font-size: 32px; margin-bottom: 6px;">@Loc["RecordPayment"]</h1>
+    <div style="font-size: 16px; color: var(--muted);">@Loc["RecordPaymentSubtitle"]</div>
+</div>
+
+<div style="max-width: 900px; margin: 0 auto;">
+    <!-- STEP 1: FIND HOUSEHOLD -->
+    <div class="card-brutal" style="margin-bottom: 24px;">
+        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 16px;">
+            <div class="step-number" style="background-color: var(--turmeric); width: 44px; height: 44px; font-size: 20px;">1</div>
+            <div>
+                <h3 style="margin: 0; font-size: 22px;">@Loc["Step1PaymentTitle"]</h3>
+                <div style="font-size: 15px; color: var(--muted);">@Loc["Step1PaymentSubtitle"]</div>
+            </div>
+        </div>
+
+        <form method="get" asp-action="Create" style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <input type="text" name="search" value="@Model.SearchTerm" placeholder="@Loc["SearchHouseholdPlaceholder"]"
+                   class="form-input-brutal" style="flex: 1; min-height: 48px;" autofocus />
+            <button type="submit" class="btn-brutal btn-turmeric-brutal" style="min-height: 48px;">
+                @Loc["FindBtn"]
+            </button>
+            <a asp-controller="Households" asp-action="Index" class="btn-brutal" style="min-height: 48px;">
+                @Loc["PickFromListBtn"]
+            </a>
+        </form>
+
+        @if (ViewBag.SearchNotFound == true)
+        {
+            <div style="background-color: #FEE2E2; border: 2px solid #111; box-shadow: 3px 3px 0 #111; border-radius: 12px; padding: 14px 18px; margin-top: 16px; color: #991B1B; font-weight: 700;">
+                <div>કોઈ ઘર મળ્યું નથી ("@Model.SearchTerm"). મહેરબાની કરીને ઘર નંબર (દા.ત. GT-01, PF-01), મોબાઈલ અથવા નામ ચકાસો.</div>
+                <div style="font-size: 13px; font-weight: 500; margin-top: 4px; color: #7F1D1D;">
+                    No household found matching "@Model.SearchTerm". Please check House No (e.g. GT-01, PF-01), Mobile, or Owner Name.
+                </div>
+            </div>
+        }
+
+        @if (ViewBag.MatchingHouseholds is List<GramKar.Models.Entities.Household> matches && matches.Any())
+        {
+            <div style="margin-top: 18px; border-top: 2px dashed #111; padding-top: 16px;">
+                <h4 style="margin: 0 0 12px 0; font-size: 17px; font-weight: 800;">
+                    શોધ પરિણામો (@matches.Count) / Search Results:
+                </h4>
+                <div class="table-container-brutal" style="box-shadow: none; margin-bottom: 0;">
+                    <table class="table-brutal" style="font-size: 15px;">
+                        <thead>
+                            <tr>
+                                <th>@Loc["HouseNo"]</th>
+                                <th>@Loc["OwnerName"]</th>
+                                <th>@Loc["Ward"]</th>
+                                <th>@Loc["Mobile"]</th>
+                                <th>@Loc["Status"]</th>
+                                <th>@Loc["Action"]</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var m in matches)
+                            {
+                                <tr>
+                                    <td><span class="chip-brutal chip-partial">@m.HouseNo</span></td>
+                                    <td>
+                                        <strong>@m.OwnerName</strong>
+                                        @if (!string.IsNullOrWhiteSpace(m.GuardianName))
+                                        {
+                                            <div style="font-size: 13px; color: var(--muted);">@m.GuardianName</div>
+                                        }
+                                    </td>
+                                    <td>@m.Ward</td>
+                                    <td>@(m.Mobile ?? "-")</td>
+                                    <td>
+                                        @if (m.IsActive)
+                                        {
+                                            <span class="chip-brutal chip-active">@Loc["Active"]</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="chip-brutal chip-inactive">@Loc["Inactive"]</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        <a asp-action="Create" asp-route-houseId="@m.HouseId" class="btn-brutal btn-sm-brutal btn-turmeric-brutal">
+                                            @Loc["Select"]
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        }
+    </div>
+
+    @if (Model.SelectedHouseholdSummary != null)
+    {
+        var summary = Model.SelectedHouseholdSummary;
+
+        <!-- STEP 2: SEE DUES -->
+        <div class="card-brutal" style="margin-bottom: 24px;">
+            <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 16px;">
+                <div class="step-number" style="background-color: var(--highlight); color: #fff; width: 44px; height: 44px; font-size: 20px;">2</div>
+                <div>
+                    <h3 style="margin: 0; font-size: 22px;">@Loc["Step2PaymentTitle"]</h3>
+                    <div style="font-size: 15px; color: var(--muted);">@Loc["Step2PaymentSubtitle"]</div>
+                </div>
+            </div>
+
+            <div style="background-color: #FFFDF8; border: 2px solid #111; border-radius: 14px; padding: 18px; margin-bottom: 18px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
+                <div>
+                    <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 6px;">
+                        <span class="chip-brutal chip-partial">@Loc["HouseNo"]: @summary.HouseNo</span>
+                        @if (!summary.IsActive)
+                        {
+                            <span class="chip-brutal chip-inactive">@Loc["Inactive"]</span>
+                        }
+                    </div>
+                    <h3 style="margin: 0 0 4px 0; font-size: 22px;">@summary.OwnerName</h3>
+                    <div style="color: var(--muted); font-size: 15px;">@Loc["Ward"]: @summary.Ward | @Loc["Mobile"]: @(summary.Mobile ?? "-")</div>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 15px; font-weight: bold; color: var(--muted);">@Loc["TotalPayable"]</div>
+                    <div style="font-size: 38px; font-weight: 800; color: @(summary.TotalPayable > 0 ? "var(--danger)" : "var(--leaf)");">
+                        ₹@summary.TotalPayable.ToString("N2")
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pending Demands Table -->
+            <div class="table-container-brutal" style="box-shadow: none; margin-bottom: 0;">
+                <table class="table-brutal" style="font-size: 15px;">
+                    <thead>
+                        <tr>
+                            <th>@Loc["TaxNameCol"]</th>
+                            <th>@Loc["FinYearCol"]</th>
+                            <th>@Loc["DueDateCol"]</th>
+                            <th>@Loc["PrincipalCol"]</th>
+                            <th>@Loc["CalculatedLateFeeCol"]</th>
+                            <th>@Loc["TotalPayable"]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var d in summary.Demands.Where(x => x.TotalPayable > 0))
+                        {
+                            <tr>
+                                <td><strong>@Loc.LocalizeTaxName(d.TaxName)</strong></td>
+                                <td>@d.FinancialYear</td>
+                                <td>@d.DueDate.ToString("dd/MM/yyyy")</td>
+                                <td>₹@d.PendingPrincipal.ToString("N0")</td>
+                                <td style="color: @(d.PendingLateFee > 0 ? "var(--danger)" : "var(--muted)"); font-weight: bold;">
+                                    ₹@d.PendingLateFee.ToString("N0")
+                                    @if (d.IsOverdue && d.PendingLateFee > 0)
+                                    {
+                                        <span style="font-size: 12px; color: var(--danger);">(@d.MonthsOverdue @Loc["MonthsLateText"])</span>
+                                    }
+                                </td>
+                                <td style="font-weight: 800; color: var(--danger);">₹@d.TotalPayable.ToString("N2")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        @if (summary.TotalPayable > 0)
+        {
+            <!-- STEP 3: RECEIVE PAYMENT -->
+            <div class="card-brutal">
+                <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 16px;">
+                    <div class="step-number" style="background-color: var(--leaf); color: #fff; width: 44px; height: 44px; font-size: 20px;">3</div>
+                    <div>
+                        <h3 style="margin: 0; font-size: 22px;">@Loc["Step3PaymentTitle"]</h3>
+                        <div style="font-size: 15px; color: var(--muted);">@Loc["Step3PaymentSubtitle"]</div>
+                    </div>
+                </div>
+
+                @if (!ViewData.ModelState.IsValid)
+                {
+                    <div class="toast-brutal toast-error">
+                        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                        {
+                            <div>@error.ErrorMessage</div>
+                        }
+                    </div>
+                }
+
+                <form asp-action="Create" method="post" id="PaymentCreateForm">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" asp-for="SelectedHouseId" id="SelectedHouseId" />
+
+                    <!-- Amount Input -->
+                    <div class="form-group-brutal">
+                        <label asp-for="Amount" class="form-label-brutal">@Loc["PaymentAmountLabel"] *</label>
+                        <div style="position: relative;">
+                            <input asp-for="Amount" type="number" step="0.01" min="1" max="@summary.TotalPayable" id="PaymentAmountInput"
+                                   class="form-input-brutal" style="font-size: 24px; font-weight: 800; color: var(--leaf); padding-left: 45px;" required />
+                            <span style="position: absolute; left: 16px; top: 12px; font-size: 24px; font-weight: 800; color: var(--ink);">₹</span>
+                        </div>
+                        <div style="display: flex; gap: 10px; margin-top: 8px;">
+                            <button type="button" class="btn-brutal btn-sm-brutal btn-turmeric-brutal" onclick="setFullAmount(@summary.TotalPayable)">
+                                @Loc["FullAmountBtn"] (₹@summary.TotalPayable.ToString("N0"))
+                            </button>
+                            <span style="font-size: 14px; color: var(--muted); align-self: center;">
+                                @Loc["PartialAllowedNote"]
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Payment Mode -->
+                    <div class="form-group-brutal">
+                        <label class="form-label-brutal">@Loc["PaymentModeCol"] *</label>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px;">
+                            <label class="card-brutal" style="margin: 0; padding: 14px; text-align: center; cursor: pointer; border-width: 2px;">
+                                <input type="radio" asp-for="Mode" value="Cash" checked style="margin-right: 6px;" />
+                                <strong style="font-size: 18px;">@Loc["ModeCash"]</strong>
+                            </label>
+
+                            <label class="card-brutal" style="margin: 0; padding: 14px; text-align: center; cursor: pointer; border-width: 2px;">
+                                <input type="radio" asp-for="Mode" value="UPI" style="margin-right: 6px;" />
+                                <strong style="font-size: 18px;">@Loc["ModeUPI"]</strong>
+                            </label>
+
+                            <label class="card-brutal" style="margin: 0; padding: 14px; text-align: center; cursor: pointer; border-width: 2px;">
+                                <input type="radio" asp-for="Mode" value="Cheque" style="margin-right: 6px;" />
+                                <strong style="font-size: 18px;">@Loc["ModeCheque"]</strong>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Reference Number -->
+                    <div class="form-group-brutal">
+                        <label asp-for="Reference" class="form-label-brutal">@Loc["RefInputLabel"]</label>
+                        <input asp-for="Reference" class="form-input-brutal" placeholder="@Loc["RefInputPlaceholder"]" />
+                    </div>
+
+                    <!-- Live Dynamic Allocation Preview Container -->
+                    <div id="LiveAllocationPreviewContainer"></div>
+
+                    <!-- Submit Button -->
+                    <div style="margin-top: 26px;">
+                        <button type="submit" class="btn-brutal btn-success-brutal" style="width: 100%; min-height: 56px; font-size: 22px;">
+                            @Loc["SaveAndPrintBtn"]
+                        </button>
+                    </div>
+                </form>
+            </div>
+        }
+        else
+        {
+            <div class="card-brutal" style="background-color: #EAF8EC; text-align: center; padding: 30px;">
+                
+                <h3 style="color: var(--leaf); margin: 8px 0;">@Loc["NoDuesOnHouse"]</h3>
+                <p style="margin: 0; color: var(--muted); font-size: 17px;">
+                    @Loc["AllYearsPaidDesc"]
+                </p>
+            </div>
+        }
+    }
+</div>
+
+@section Scripts {
+    <script>
+        function setFullAmount(amt) {
+            const input = document.getElementById('PaymentAmountInput');
+            if (input) {
+                input.value = amt;
+                input.dispatchEvent(new Event('input'));
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const input = document.getElementById('PaymentAmountInput');
+            if (input && input.value > 0) {
+                input.dispatchEvent(new Event('input'));
+            }
+        });
+    </script>
+}

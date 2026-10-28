@@ -1,0 +1,200 @@
+@model GramKar.Models.ViewModels.HouseholdDetailsViewModel
+@{
+    ViewData["Title"] = Loc["PropertyDetailsTitle"] + " - " + Model.Household.HouseNo;
+    bool isAdmin = User.IsInRole("Admin");
+}
+
+<div style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+    <a asp-action="Index" class="btn-brutal btn-sm-brutal">
+        ← @Loc["Back"]
+    </a>
+    <div style="display: flex; gap: 10px;">
+        @if (isAdmin)
+        {
+            <a asp-action="Edit" asp-route-id="@Model.Household.HouseId" class="btn-brutal btn-sm-brutal btn-turmeric-brutal">
+                @Loc["EditHousehold"]
+            </a>
+            @if (Model.DuesSummary.TotalPayable > 0)
+            {
+                <a asp-controller="Payments" asp-action="Create" asp-route-houseId="@Model.Household.HouseId" class="btn-brutal btn-sm-brutal btn-success-brutal">
+                    @Loc["RecordPayment"]
+                </a>
+            }
+        }
+    </div>
+</div>
+
+<!-- 1. Household Info Header Card -->
+<div class="card-brutal" style="margin-bottom: 24px;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px;">
+        <div>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
+                <span class="chip-brutal chip-partial" style="font-size: 18px; font-weight: 800;">
+                    @Loc["HouseNo"]: @Model.Household.HouseNo
+                </span>
+                <span class="chip-brutal @(Model.Household.IsActive ? "chip-paid" : "chip-cancelled")">
+                    @(Model.Household.IsActive ? Loc["Active"] : Loc["Inactive"])
+                </span>
+            </div>
+            <h2 style="font-size: 30px; margin: 4px 0;">@Model.Household.OwnerName</h2>
+            @if (!string.IsNullOrEmpty(Model.Household.GuardianName))
+            {
+                <div style="font-size: 16px; color: var(--muted); margin-bottom: 4px;">
+                    @Loc["FatherOrHusband"] <strong>@Model.Household.GuardianName</strong>
+                </div>
+            }
+            <div style="font-size: 16px; color: var(--muted);">
+                @Loc["Ward"]: <strong>@Model.Household.Ward</strong> | @Loc["PropertyType"]: <strong>@(Model.Household.PropertyType == "Shop" ? Loc["Shop"] : Loc["Residential"])</strong> | @Loc["WaterConnectionCol"]: <strong>@(Model.Household.HasWater ? Loc["Yes"] : Loc["No"])</strong>
+            </div>
+        </div>
+
+        <div style="text-align: right; background-color: var(--bg); border: 2px solid #111; border-radius: 14px; padding: 16px 24px;">
+            <div style="font-size: 15px; font-weight: bold; color: var(--muted);">@Loc["TotalPayableHeading"]</div>
+            <div style="font-size: 36px; font-weight: 800; color: @(Model.DuesSummary.TotalPayable > 0 ? "var(--danger)" : "var(--leaf)");">
+                ₹@Model.DuesSummary.TotalPayable.ToString("N2")
+            </div>
+            <div style="font-size: 14px; color: var(--muted); margin-top: 4px;">
+                @Loc["PrincipalShort"] ₹@Model.DuesSummary.TotalPrincipalPending.ToString("N0") | @Loc["LateFeeShort"] ₹@Model.DuesSummary.TotalLateFeePending.ToString("N0")
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 2. Active Demands & Dues Breakdown Card -->
+<div class="card-brutal" style="margin-bottom: 24px;">
+    <h3 style="font-size: 22px; margin-bottom: 16px;">@Loc["DemandsSectionTitle"]</h3>
+
+    <div class="table-container-brutal" style="box-shadow: none;">
+        <table class="table-brutal">
+            <thead>
+                <tr>
+                    <th>@Loc["TaxNameCol"]</th>
+                    <th>@Loc["FinYearCol"]</th>
+                    <th>@Loc["PrincipalCol"]</th>
+                    <th>@Loc["DueDateCol"]</th>
+                    <th>@Loc["PaidPrincipalCol"]</th>
+                    <th>@Loc["CalculatedLateFeeCol"]</th>
+                    <th>@Loc["PendingAmountCol"]</th>
+                    <th>@Loc["Status"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.DuesSummary.Demands.Any())
+                {
+                    @foreach (var d in Model.DuesSummary.Demands)
+                    {
+                        <tr>
+                            <td><strong>@Loc.LocalizeTaxName(d.TaxName)</strong></td>
+                            <td>@d.FinancialYear</td>
+                            <td>₹@d.PrincipalAmount.ToString("N0")</td>
+                            <td>@d.DueDate.ToString("dd/MM/yyyy")</td>
+                            <td style="color: var(--leaf); font-weight: bold;">₹@d.PaidPrincipal.ToString("N0")</td>
+                            <td style="color: @(d.PendingLateFee > 0 ? "var(--danger)" : "var(--muted)"); font-weight: bold;">
+                                ₹@d.PendingLateFee.ToString("N0")
+                                @if (d.IsOverdue && d.PendingLateFee > 0)
+                                {
+                                    <div style="font-size: 12px; font-weight: normal; color: var(--danger);">
+                                        (@d.MonthsOverdue @Loc["MonthsLateText"])
+                                    </div>
+                                }
+                            </td>
+                            <td style="font-weight: 800; font-size: 18px; color: @(d.TotalPayable > 0 ? "var(--danger)" : "var(--leaf)");">
+                                ₹@d.TotalPayable.ToString("N2")
+                            </td>
+                            <td>
+                                @if (d.IsFullyPaid)
+                                {
+                                    <span class="chip-brutal chip-paid">@Loc["PaidBadge"]</span>
+                                }
+                                else if (d.IsPartial)
+                                {
+                                    <span class="chip-brutal chip-partial">@Loc["PartialBadge"]</span>
+                                }
+                                else if (d.IsOverdue)
+                                {
+                                    <span class="chip-brutal chip-pending">@Loc["DefaulterBadge"]</span>
+                                }
+                                else
+                                {
+                                    <span class="chip-brutal chip-partial">@Loc["PendingBadge"]</span>
+                                }
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="8" style="text-align: center; padding: 20px; color: var(--muted);">
+                            @Loc["NoHouseholdsFound"]
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- 3. Payment History Table -->
+<div class="card-brutal">
+    <h3 style="font-size: 22px; margin-bottom: 16px;">@Loc["PaymentHistorySectionTitle"]</h3>
+
+    <div class="table-container-brutal" style="box-shadow: none;">
+        <table class="table-brutal">
+            <thead>
+                <tr>
+                    <th>@Loc["ReceiptNoCol"]</th>
+                    <th>@Loc["DateCol"]</th>
+                    <th>@Loc["AmountCol"]</th>
+                    <th>@Loc["PaymentModeCol"]</th>
+                    <th>@Loc["RefCol"]</th>
+                    <th>@Loc["ClerkCol"]</th>
+                    <th>@Loc["Status"]</th>
+                    <th>@Loc["Action"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.PaymentHistory.Any())
+                {
+                    @foreach (var p in Model.PaymentHistory)
+                    {
+                        <tr>
+                            <td><strong>@p.ReceiptNo</strong></td>
+                            <td>@p.PaymentDate.ToString("dd/MM/yyyy HH:mm")</td>
+                            <td style="font-weight: 800; color: var(--leaf);">₹@p.TotalAmount.ToString("N2")</td>
+                            <td>
+                                @(p.Mode == "Cash" ? Loc["ModeCash"] : p.Mode == "UPI" ? Loc["ModeUPI"] : Loc["ModeCheque"])
+                            </td>
+                            <td>@(p.Reference ?? "-")</td>
+                            <td>@p.ReceivedByUser?.FullName</td>
+                            <td>
+                                @if (p.IsCancelled)
+                                {
+                                    <span class="chip-brutal chip-cancelled">@Loc["CancelledBadge"]</span>
+                                    <div style="font-size: 12px; color: var(--danger);">@p.CancelReason</div>
+                                }
+                                else
+                                {
+                                    <span class="chip-brutal chip-paid">@Loc["PaidBadge"]</span>
+                                }
+                            </td>
+                            <td>
+                                <a asp-controller="Payments" asp-action="Receipt" asp-route-id="@p.PaymentId" class="btn-brutal btn-sm-brutal">
+                                    @Loc["ViewReceiptBtn"]
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="8" style="text-align: center; padding: 20px; color: var(--muted);">
+                            @Loc["NoPaymentsYet"]
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

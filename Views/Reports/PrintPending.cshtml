@@ -1,0 +1,85 @@
+@model GramKar.Models.ViewModels.PendingReportViewModel
+@{
+    Layout = null;
+    var panchayat = ViewBag.Panchayat as GramKar.Models.Entities.PanchayatSetting;
+}
+
+<!DOCTYPE html>
+<html lang="@Loc.CurrentLanguage">
+<head>
+    <meta charset="utf-8" />
+    <title>@Loc["DefaultersRegisterTitle"] - @(panchayat?.PanchayatName ?? Loc["PanchayatSubtitle"])</title>
+    <link rel="stylesheet" href="~/css/theme.css" />
+    <style>
+        body { background: #ffffff !important; padding: 20px; font-size: 14px; }
+        .print-btn-bar { display: flex; justify-content: space-between; margin-bottom: 20px; }
+        @@media print { .print-btn-bar { display: none !important; } }
+    </style>
+</head>
+<body>
+    <div class="print-btn-bar no-print">
+        <button class="btn-brutal btn-turmeric-brutal" onclick="window.print()">
+            🖨️ @Loc["Print"]
+        </button>
+        <button class="btn-brutal" onclick="window.close()">
+            @Loc["Close"]
+        </button>
+    </div>
+
+    <!-- Official Header -->
+    <div style="text-align: center; border-bottom: 2px solid #000; padding-bottom: 12px; margin-bottom: 16px;">
+        <h2 style="margin: 0; font-size: 24px;">@(panchayat?.PanchayatName ?? Loc["PanchayatSubtitle"])</h2>
+        <div style="font-size: 15px;">@panchayat?.Taluka, @panchayat?.District, @Loc["StateGujarat"]</div>
+        <h3 style="margin: 8px 0 0 0; font-size: 18px; text-decoration: underline;">
+            @Loc["DefaultersRegisterTitle"]
+        </h3>
+        <div style="font-size: 13px; margin-top: 4px;">
+            @Loc["ReportDate"]: @DateTime.Today.ToString("dd/MM/yyyy") | @Loc["FilterYear"]: @Model.Filter.FinancialYear | @Loc["Ward"]: @Model.Filter.Ward
+        </div>
+    </div>
+
+    <!-- Summary Box -->
+    <div style="border: 1px solid #000; padding: 10px 14px; margin-bottom: 16px; display: flex; justify-content: space-between; font-weight: bold; font-size: 15px; background: #f9f9f9;">
+        <div>@Loc["TotalDefaulterHouses"]: @Model.TotalDefaulterCount</div>
+        <div>@Loc["TotalPendingLateFee"]: ₹@Model.TotalLateFeeAmount.ToString("N0")</div>
+        <div>@Loc["TotalCollectablePending"]: ₹@Model.TotalPendingAmount.ToString("N0")</div>
+    </div>
+
+    <!-- Table -->
+    <table class="table-brutal" style="width: 100%; border: 1px solid #000; font-size: 13px;">
+        <thead>
+            <tr style="background: #e0e0e0;">
+                <th style="border: 1px solid #000; padding: 6px;">@Loc["HouseNo"]</th>
+                <th style="border: 1px solid #000; padding: 6px;">@Loc["OwnerName"]</th>
+                <th style="border: 1px solid #000; padding: 6px;">@Loc["Ward"]</th>
+                <th style="border: 1px solid #000; padding: 6px;">@Loc["Mobile"]</th>
+                <th style="border: 1px solid #000; padding: 6px;">@Loc["TaxBreakdownCol"]</th>
+                <th style="border: 1px solid #000; padding: 6px; text-align: right;">@Loc["LateFee"] (₹)</th>
+                <th style="border: 1px solid #000; padding: 6px; text-align: right;">@Loc["TotalPending"] (₹)</th>
+                <th style="border: 1px solid #000; padding: 6px;">@Loc["OldestDueCol"]</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var row in Model.Rows)
+            {
+                <tr>
+                    <td style="border: 1px solid #000; padding: 6px;"><strong>@row.HouseNo</strong></td>
+                    <td style="border: 1px solid #000; padding: 6px;">@row.OwnerName</td>
+                    <td style="border: 1px solid #000; padding: 6px;">@row.Ward</td>
+                    <td style="border: 1px solid #000; padding: 6px;">@(row.Mobile ?? "-")</td>
+                    <td style="border: 1px solid #000; padding: 6px; font-size: 12px;">@row.TaxBreakdown</td>
+                    <td style="border: 1px solid #000; padding: 6px; text-align: right;">₹@row.LateFeePending.ToString("N0")</td>
+                    <td style="border: 1px solid #000; padding: 6px; text-align: right; font-weight: bold;">₹@row.TotalPending.ToString("N0")</td>
+                    <td style="border: 1px solid #000; padding: 6px; font-size: 12px;">@(row.OldestDueDate.HasValue ? row.OldestDueDate.Value.ToString("dd/MM/yyyy") : "-")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 50px; font-size: 14px;">
+        <div>@Loc["PreparedByClerk"]</div>
+        <div>@Loc["TalatiSign"]</div>
+        <div>@Loc["SarpanchSignatureSeal"]</div>
+    </div>
+</body>
+</html>

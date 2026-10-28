@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="@Loc.CurrentLanguage">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - @Loc["AppName"]</title>
+    <link rel="stylesheet" href="~/css/theme.css" />
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <header class="navbar-brutal no-print">
+        <div class="container-custom nav-container">
+            <a class="nav-brand" asp-controller="Home" asp-action="Index">
+                <div class="nav-brand-logo">🏛️</div>
+                <div>
+                    <div class="nav-brand-title">@Loc["AppName"]</div>
+                    <div style="font-size: 13px; font-weight: 700; color: var(--muted);">@Loc["PanchayatSubtitle"]</div>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <ul class="nav-links">
+                @if (User.Identity != null && User.Identity.IsAuthenticated)
+                {
+                    <li>
+                        <a class="nav-link-brutal @(ViewContext.RouteData.Values["controller"]?.ToString() == "Dashboard" ? "active" : "")"
+                           asp-controller="Dashboard" asp-action="Index">
+                            @Loc["Dashboard"]
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link-brutal @(ViewContext.RouteData.Values["controller"]?.ToString() == "Households" ? "active" : "")"
+                           asp-controller="Households" asp-action="Index">
+                            @Loc["Households"]
+                        </a>
+                    </li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li>
+                            <a class="nav-link-brutal @(ViewContext.RouteData.Values["controller"]?.ToString() == "Payments" && ViewContext.RouteData.Values["action"]?.ToString() == "Create" ? "active" : "")"
+                               asp-controller="Payments" asp-action="Create">
+                                @Loc["RecordPayment"]
+                            </a>
+                        </li>
+                    }
+                    <li>
+                        <a class="nav-link-brutal @(ViewContext.RouteData.Values["controller"]?.ToString() == "Reports" ? "active" : "")"
+                           asp-controller="Reports" asp-action="Pending">
+                            @Loc["PendingDues"]
+                        </a>
+                    </li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li>
+                            <a class="nav-link-brutal @(ViewContext.RouteData.Values["controller"]?.ToString() == "Settings" ? "active" : "")"
+                               asp-controller="Settings" asp-action="TaxTypes">
+                                @Loc["TaxSettings"]
+                            </a>
+                        </li>
+                    }
+                }
+                else
+                {
+                    <li><a class="nav-link-brutal active" asp-controller="Home" asp-action="Index">@Loc["Home"]</a></li>
+                    <li><a class="nav-link-brutal" href="/#how-it-works">@Loc["HowItWorksTitle"]</a></li>
+                    <li><a class="nav-link-brutal" href="/#features">@Loc["Services"]</a></li>
+                    <li><a class="nav-link-brutal" href="/#faq">@Loc["FAQ"]</a></li>
+                }
+            </ul>
+
+            <!-- Right Controls: Language Switcher & Auth Pill -->
+            <div style="display: flex; align-items: center; gap: 14px;">
+                <!-- Language Switcher Pill -->
+                <div class="lang-switcher-pill" title="@Loc["Language"]">
+                    <a href="/Home/SetLanguage?lang=gu&returnUrl=@(System.Net.WebUtility.UrlEncode(Context.Request.Path + Context.Request.QueryString))"
+                       class="lang-option @(Loc.CurrentLanguage == "gu" ? "active" : "")">ગુ</a>
+                    <a href="/Home/SetLanguage?lang=hi&returnUrl=@(System.Net.WebUtility.UrlEncode(Context.Request.Path + Context.Request.QueryString))"
+                       class="lang-option @(Loc.CurrentLanguage == "hi" ? "active" : "")">हि</a>
+                    <a href="/Home/SetLanguage?lang=en&returnUrl=@(System.Net.WebUtility.UrlEncode(Context.Request.Path + Context.Request.QueryString))"
+                       class="lang-option @(Loc.CurrentLanguage == "en" ? "active" : "")">EN</a>
+                </div>
+
+                @if (User.Identity != null && User.Identity.IsAuthenticated)
+                {
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span class="chip-brutal chip-partial" style="display: none; @@media(min-width: 900px){display:inline-flex;}">
+                            @User.FindFirst("FullName")?.Value.Split(' ')[0] (@(User.IsInRole("Admin") ? Loc["AdminRole"] : Loc["SarpanchRole"]))
+                        </span>
+                        <form asp-controller="Account" asp-action="Logout" method="post" style="display: inline;">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn-brutal btn-pill-brutal btn-danger-brutal" style="min-height: 40px; padding: 0 16px; font-size: 15px;">
+                                @Loc["Logout"]
+                            </button>
+                        </form>
+                    </div>
+                }
+                else
+                {
+                    <a asp-controller="Account" asp-action="Login" class="btn-brutal btn-primary-brutal btn-pill-brutal">
+                        @Loc["Login"]
+                    </a>
+                }
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Body -->
+    <main style="padding-top: 28px; padding-bottom: 50px;">
+        <div class="container-custom">
+            <!-- Toast Feedback -->
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div id="toastNotification" class="toast-brutal toast-success no-print" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; transition: opacity 0.4s ease, transform 0.4s ease;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>@TempData["SuccessMessage"]</span>
+                    </div>
+                    <button type="button" onclick="dismissToast('toastNotification')" style="background: none; border: none; font-size: 22px; font-weight: 800; cursor: pointer; color: inherit; padding: 0 4px; line-height: 1;" title="Close" aria-label="Close">
+                        &times;
+                    </button>
+                </div>
+            }
+            @if (TempData["ErrorMessage"] != null)
+            {
+                <div id="toastErrorNotification" class="toast-brutal toast-error no-print" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; transition: opacity 0.4s ease, transform 0.4s ease;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="12"></line>
+                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        </svg>
+                        <span>@TempData["ErrorMessage"]</span>
+                    </div>
+                    <button type="button" onclick="dismissToast('toastErrorNotification')" style="background: none; border: none; font-size: 22px; font-weight: 800; cursor: pointer; color: inherit; padding: 0 4px; line-height: 1;" title="Close" aria-label="Close">
+                        &times;
+                    </button>
+                </div>
+            }
+
+            @RenderBody()
+        </div>
+    </main>
+
+    <!-- Warli Strip & Footer -->
+    <footer class="footer-warli no-print">
+        <div class="warli-strip"></div>
+        <div class="container-custom footer-content">
+            <div class="grid-3" style="margin-bottom: 30px;">
+                <div>
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                        <div class="nav-brand-logo" style="width: 38px; height: 38px; font-size: 18px;">🏛️</div>
+                        <h3 style="margin: 0; font-size: 20px;">@Loc["AppName"]</h3>
+                    </div>
+                    <p style="color: var(--muted); font-size: 16px;">
+                        @Loc["FooterDesc"]
+                    </p>
+                </div>
+
+                <div>
+                    <h4 style="margin-bottom: 12px;">@Loc["OfficeHeading"]</h4>
+                    <p style="color: var(--muted); font-size: 16px; margin-bottom: 6px;">
+                        @Loc["OfficeAddressDefault"]
+                    </p>
+                    <p style="color: var(--muted); font-size: 16px; margin-bottom: 6px;">
+                        @Loc["OfficeTimingsDefault"]
+                    </p>
+                    <p style="color: var(--muted); font-size: 16px;">
+                        @Loc["OfficeHelpline"]: +91 98250 12345
+                    </p>
+                </div>
+
+                <div>
+                    <h4 style="margin-bottom: 12px;">@Loc["CheckDuesFooter"]</h4>
+                    <form asp-controller="Home" asp-action="CheckMyDues" method="post" id="FooterDuesForm" style="display: flex; gap: 8px;">
+                        @Html.AntiForgeryToken()
+                        <input type="text" name="houseNo" placeholder="@Loc["HouseNoPlaceholder"]" required
+                               class="form-input-brutal" style="min-height: 46px; border-radius: var(--radius-pill); font-size: 16px;" />
+                        <button type="submit" class="btn-brutal btn-turmeric-brutal" style="min-height: 46px; padding: 0 16px; border-radius: var(--radius-pill); font-size: 16px;">
+                            →
+                        </button>
+                    </form>
+                    <div style="font-size: 14px; color: var(--muted); margin-top: 6px;">
+                        @Loc["FooterHint"]
+                    </div>
+                </div>
+            </div>
+
+            <div style="border-top: 2px solid #111; padding-top: 18px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 15px; font-weight: 700;">
+                <div>
+                    © @DateTime.Now.Year @Loc["Copyright"]
+                </div>
+                <div>
+                    @Loc["GovCampaign"]
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.GramKarLang = '@Loc.CurrentLanguage';
+        window.GramKarTranslations = {
+            allocationPreview: '@Loc["AllocationPreview"]',
+            taxName: '@Loc["TaxNameCol"]',
+            finYear: '@Loc["FinYearCol"]',
+            pendingLateFee: '@Loc["PendingLateFeeCol"]',
+            payingLateFee: '@Loc["PayingLateFeeCol"]',
+            pendingPrincipal: '@Loc["PendingPrincipalCol"]',
+            payingPrincipal: '@Loc["PayingPrincipalCol"]',
+            totalAllocated: '@Loc["TotalAllocatedCol"]',
+            noPendingDues: '@Loc["NoPendingDues"]',
+            totalPayment: '@Loc["TotalPaymentLabel"]',
+            remainingBalanceAfter: '@Loc["RemainingBalanceAfterLabel"]',
+            checkingDues: '@Loc["CheckingDuesText"]',
+            errorTryAgain: '@Loc["ErrorTryAgain"]',
+            processingPayment: '@Loc["ProcessingPayment"]',
+            confirmAndGetReceipt: '@Loc["ConfirmAndGetReceipt"]',
+            receiptNo: '@Loc["ReceiptNo"]'
+        };
+
+        function dismissToast(id) {
+            var el = document.getElementById(id);
+            if (el) {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(-8px)';
+                setTimeout(function () {
+                    if (el && el.parentNode) {
+                        el.parentNode.removeChild(el);
+                    }
+                }, 350);
+            }
+        }
+
+        // Auto-dismiss after 4 seconds so notification appears once and disappears automatically
+        document.addEventListener('DOMContentLoaded', function () {
+            if (document.getElementById('toastNotification')) {
+                setTimeout(function () {
+                    dismissToast('toastNotification');
+                }, 4000);
+            }
+            if (document.getElementById('toastErrorNotification')) {
+                setTimeout(function () {
+                    dismissToast('toastErrorNotification');
+                }, 6000);
+            }
+        });
+
+        // Ensure toast never persists when navigating with browser back/forward cache (bfcache)
+        window.addEventListener('pageshow', function (event) {
+            if (event.persisted) {
+                var s = document.getElementById('toastNotification');
+                if (s && s.parentNode) s.parentNode.removeChild(s);
+                var e = document.getElementById('toastErrorNotification');
+                if (e && e.parentNode) e.parentNode.removeChild(e);
+            }
+        });
+    </script>
+    <script src="~/js/site.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

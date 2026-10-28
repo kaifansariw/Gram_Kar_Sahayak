@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="100%" height="100%">
+  <!-- Sky background -->
+  <rect width="600" height="450" fill="#EAF3FF"/>
+  
+  <!-- Rising Sun with rays -->
+  <circle cx="300" cy="190" r="70" fill="#FFC933" stroke="#111111" stroke-width="3"/>
+  <line x1="300" y1="100" x2="300" y2="70" stroke="#111111" stroke-width="3" stroke-linecap="round"/>
+  <line x1="220" y1="130" x2="200" y2="110" stroke="#111111" stroke-width="3" stroke-linecap="round"/>
+  <line x1="380" y1="130" x2="400" y2="110" stroke="#111111" stroke-width="3" stroke-linecap="round"/>
+  <line x1="190" y1="190" x2="160" y2="190" stroke="#111111" stroke-width="3" stroke-linecap="round"/>
+  <line x1="410" y1="190" x2="440" y2="190" stroke="#111111" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Distant Hills -->
+  <path d="M-20,240 Q100,160 220,220 Q340,150 480,210 Q540,180 620,230 L620,450 L-20,450 Z" fill="#99D39F" stroke="#111111" stroke-width="3.5"/>
+  <path d="M60,240 Q180,180 320,240 Q440,170 580,250 L620,450 L0,450 Z" fill="#69BF78" stroke="#111111" stroke-width="3.5"/>
+
+  <!-- Agricultural Green Fields with Furrows -->
+  <path d="M-20,280 Q150,250 300,280 Q450,260 620,290 L620,450 L-20,450 Z" fill="#2E9E4F" stroke="#111111" stroke-width="4"/>
+  <!-- Field perspective lines -->
+  <line x1="120" y1="280" x2="40" y2="450" stroke="#111111" stroke-width="2.5" stroke-dasharray="8 6"/>
+  <line x1="240" y1="280" x2="180" y2="450" stroke="#111111" stroke-width="2.5" stroke-dasharray="8 6"/>
+  <line x1="360" y1="280" x2="380" y2="450" stroke="#111111" stroke-width="2.5" stroke-dasharray="8 6"/>
+  <line x1="480" y1="285" x2="520" y2="450" stroke="#111111" stroke-width="2.5" stroke-dasharray="8 6"/>
+
+  <!-- Banyan Tree (વડનું વૃક્ષ) on the right -->
+  <!-- Trunk -->
+  <path d="M470,360 Q485,300 460,240 Q475,250 495,240 Q485,300 515,360 Z" fill="#8C5331" stroke="#111111" stroke-width="3.5"/>
+  <!-- Hanging roots -->
+  <line x1="450" y1="230" x2="445" y2="300" stroke="#111111" stroke-width="2"/>
+  <line x1="510" y1="230" x2="515" y2="310" stroke="#111111" stroke-width="2"/>
+  <!-- Tree foliage clouds -->
+  <circle cx="440" cy="190" r="45" fill="#1C6B32" stroke="#111111" stroke-width="3.5"/>
+  <circle cx="510" cy="180" r="50" fill="#2E9E4F" stroke="#111111" stroke-width="3.5"/>
+  <circle cx="475" cy="140" r="42" fill="#59BA73" stroke="#111111" stroke-width="3.5"/>
+  <circle cx="545" cy="205" r="35" fill="#1C6B32" stroke="#111111" stroke-width="3.5"/>
+
+  <!-- Village Panchayat Ghar / Village Hall on left -->
+  <!-- Base & Pillars -->
+  <rect x="70" y="220" width="160" height="100" fill="#FFFFFF" stroke="#111111" stroke-width="3.5" rx="6"/>
+  <!-- Roof (Terracotta Tiles) -->
+  <polygon points="50,225 150,165 250,225" fill="#E8502F" stroke="#111111" stroke-width="3.5"/>
+  <!-- Indian National Flag on Panchayat Ghar -->
+  <line x1="150" y1="165" x2="150" y2="120" stroke="#111111" stroke-width="3"/>
+  <path d="M150,120 L180,128 L150,136 Z" fill="#FF9933" stroke="#111111" stroke-width="1.5"/>
+  <!-- Door & Windows -->
+  <rect x="130" y="260" width="40" height="60" fill="#8C5331" stroke="#111111" stroke-width="3" rx="4"/>
+  <rect x="85" y="245" width="30" height="30" fill="#2F7DE1" stroke="#111111" stroke-width="2.5" rx="4"/>
+  <rect x="185" y="245" width="30" height="30" fill="#2F7DE1" stroke="#111111" stroke-width="2.5" rx="4"/>
+  <!-- Panchayat text board -->
+  <rect x="95" y="210" width="110" height="18" fill="#FFC933" stroke="#111111" stroke-width="2" rx="4"/>
+  <text x="150" y="223" font-size="10" font-weight="bold" text-anchor="middle" fill="#111">ગ્રામ પંચાયત</text>
+
+  <!-- Village Water Well (કૂવો) -->
+  <ellipse cx="320" cy="340" rx="45" ry="18" fill="#D3D3D3" stroke="#111111" stroke-width="3"/>
+  <path d="M275,340 L275,370 Q320,390 365,370 L365,340 Z" fill="#A8A8A8" stroke="#111111" stroke-width="3"/>
+  <line x1="285" y1="340" x2="285" y2="300" stroke="#111111" stroke-width="3"/>
+  <line x1="355" y1="340" x2="355" y2="300" stroke="#111111" stroke-width="3"/>
+  <line x1="280" y1="300" x2="360" y2="300" stroke="#111111" stroke-width="3"/>
+  <!-- Pulley wheel & pot -->
+  <circle cx="320" cy="305" r="8" fill="#E8502F" stroke="#111111" stroke-width="2"/>
+  <path d="M312,320 Q320,335 328,320 Z" fill="#8C5331" stroke="#111111" stroke-width="2"/>
+
+  <!-- Flying birds in sky -->
+  <path d="M100,80 Q108,70 115,80 Q122,70 130,80" stroke="#111111" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M140,65 Q148,55 155,65 Q162,55 170,65" stroke="#111111" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,87 @@
+@model GramKar.Models.ViewModels.LoginViewModel
+@{
+    ViewData["Title"] = Loc["LoginPageTitle"];
+}
+
+<div style="max-width: 480px; margin: 40px auto;">
+    <div class="card-brutal" style="padding: 36px 30px; text-align: center;">
+        <!-- Avatar on top -->
+        <div style="width: 90px; height: 90px; border: var(--border); border-radius: 50%; overflow: hidden; background: var(--turmeric); margin: 0 auto 18px auto; box-shadow: 3px 3px 0 #111;">
+            <img src="~/img/sarpanch.svg" alt="Avatar" style="width: 100%; height: 100%; object-fit: cover;" />
+        </div>
+
+        <h2 style="font-size: 28px; margin-bottom: 6px;">@Loc["LoginPageTitle"]</h2>
+        <p style="color: var(--muted); font-size: 16px; margin-bottom: 24px;">
+            @Loc["LoginPageSubtitle"]
+        </p>
+
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div class="toast-brutal toast-error" style="margin-bottom: 20px; text-align: left;">
+                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    <div>@(error.ErrorMessage.Contains("Invalid") || error.ErrorMessage.Contains("અમાન્ય") ? Loc["InvalidLoginMsg"] : error.ErrorMessage)</div>
+                }
+            </div>
+        }
+
+        <form asp-controller="Account" asp-action="Login" method="post" style="text-align: left;">
+            @Html.AntiForgeryToken()
+            <input type="hidden" asp-for="ReturnUrl" />
+
+            <div class="form-group-brutal">
+                <label asp-for="Username" class="form-label-brutal">@Loc["UsernameLabel"]</label>
+                <input asp-for="Username" class="form-input-brutal" id="loginUsername" placeholder="@Loc["UsernamePlaceholder"]" autofocus required />
+            </div>
+
+            <div class="form-group-brutal">
+                <label asp-for="Password" class="form-label-brutal">@Loc["PasswordLabel"]</label>
+                <div style="position: relative;">
+                    <input asp-for="Password" type="password" id="loginPassword" class="form-input-brutal" placeholder="@Loc["PasswordPlaceholder"]" required />
+                    <button type="button" onclick="togglePasswordVisibility()" style="position: absolute; right: 12px; top: 14px; background: none; border: none; font-size: 20px; cursor: pointer;">
+                        👁️
+                    </button>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-brutal btn-primary-brutal" style="width: 100%; margin-top: 10px;">
+                🔐 @Loc["LoginSubmitBtn"]
+            </button>
+        </form>
+
+        <!-- Quick Demo Accounts Helper -->
+        <div style="margin-top: 26px; border-top: 2px dashed #111; padding-top: 18px; text-align: left; font-size: 15px;">
+            <div style="font-weight: 800; margin-bottom: 8px; color: var(--muted);">
+                ⚡ @Loc["QuickDemoTitle"]
+            </div>
+            <div style="display: flex; gap: 8px;">
+                <button type="button" class="btn-brutal btn-sm-brutal btn-turmeric-brutal" style="flex: 1;"
+                        onclick="fillCredentials('admin', 'Admin@123')">
+                    @Loc["TalatiAdminBtn"]
+                </button>
+                <button type="button" class="btn-brutal btn-sm-brutal" style="flex: 1;"
+                        onclick="fillCredentials('sarpanch', 'Sarpanch@123')">
+                    @Loc["SarpanchViewerBtn"]
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function fillCredentials(u, p) {
+            document.getElementById('loginUsername').value = u;
+            document.getElementById('loginPassword').value = p;
+        }
+
+        function togglePasswordVisibility() {
+            const pass = document.getElementById('loginPassword');
+            if (pass.type === 'password') {
+                pass.type = 'text';
+            } else {
+                pass.type = 'password';
+            }
+        }
+    </script>
+}

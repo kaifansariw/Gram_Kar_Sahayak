@@ -1,0 +1,104 @@
+@model List<GramKar.Models.Entities.Payment>
+@{
+    ViewData["Title"] = Loc["RecentPayments"];
+    bool isAdmin = User.IsInRole("Admin");
+}
+
+<div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
+    <div>
+        <h1 style="font-size: 32px; margin: 0;">🧾 @Loc["RecentPayments"]</h1>
+        <div style="color: var(--muted); font-size: 16px;">@Loc["RecordPaymentSubtitle"]</div>
+    </div>
+    @if (isAdmin)
+    {
+        <a asp-action="Create" class="btn-brutal btn-success-brutal">
+            💰 @Loc["RecordPayment"]
+        </a>
+    }
+</div>
+
+<!-- Search Bar -->
+<div class="card-brutal" style="padding: 18px; margin-bottom: 24px;">
+    <form method="get" asp-action="Index" style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <input type="text" name="search" value="@ViewBag.Search" placeholder="@Loc["SearchHouseholdPlaceholder"]"
+               class="form-input-brutal" style="flex: 1; min-height: 48px;" />
+        <button type="submit" class="btn-brutal btn-turmeric-brutal" style="min-height: 48px;">
+            @Loc["Search"]
+        </button>
+        @if (!string.IsNullOrEmpty(ViewBag.Search as string))
+        {
+            <a asp-action="Index" class="btn-brutal btn-sm-brutal" style="min-height: 48px;">
+                @Loc["Reset"]
+            </a>
+        }
+    </form>
+</div>
+
+<!-- Receipts Table -->
+<div class="table-container-brutal">
+    <table class="table-brutal">
+        <thead>
+            <tr>
+                <th>@Loc["ReceiptNoCol"]</th>
+                <th>@Loc["DateCol"]</th>
+                <th>@Loc["HouseNo"]</th>
+                <th>@Loc["OwnerName"]</th>
+                <th>@Loc["PaymentModeCol"]</th>
+                <th>@Loc["AmountCol"]</th>
+                <th>@Loc["ClerkCol"]</th>
+                <th>@Loc["Status"]</th>
+                <th>@Loc["Action"]</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Any())
+            {
+                @foreach (var p in Model)
+                {
+                    <tr>
+                        <td>
+                            <strong style="color: var(--highlight);">@p.ReceiptNo</strong>
+                        </td>
+                        <td>@p.PaymentDate.ToString("dd/MM/yyyy HH:mm")</td>
+                        <td><span class="chip-brutal chip-partial">@p.Household?.HouseNo</span></td>
+                        <td>@p.Household?.OwnerName</td>
+                        <td>
+                            @(p.Mode == "Cash" ? Loc["ModeCash"] : p.Mode == "UPI" ? Loc["ModeUPI"] : Loc["ModeCheque"])
+                            @if (!string.IsNullOrEmpty(p.Reference))
+                            {
+                                <div style="font-size: 13px; color: var(--muted);">@p.Reference</div>
+                            }
+                        </td>
+                        <td style="font-weight: 800; font-size: 18px; color: var(--leaf);">
+                            ₹@p.TotalAmount.ToString("N2")
+                        </td>
+                        <td>@p.ReceivedByUser?.FullName</td>
+                        <td>
+                            @if (p.IsCancelled)
+                            {
+                                <span class="chip-brutal chip-cancelled">@Loc["CancelledBadge"]</span>
+                            }
+                            else
+                            {
+                                <span class="chip-brutal chip-paid">@Loc["PaidBadge"]</span>
+                            }
+                        </td>
+                        <td>
+                            <a asp-action="Receipt" asp-route-id="@p.PaymentId" class="btn-brutal btn-sm-brutal">
+                                @Loc["ViewReceiptBtn"]
+                            </a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="9" style="text-align: center; padding: 24px; color: var(--muted);">
+                        @Loc["NoPaymentsYet"]
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,153 @@
+@model GramKar.Models.ViewModels.PublicDuesLookupViewModel
+
+@if (!Model.HasSearched)
+{
+    <div></div>
+}
+else if (!Model.Found)
+{
+    <div class="card-brutal" style="background-color: #FFF2F2; border-color: var(--danger); margin-top: 20px;">
+        <div style="display: flex; align-items: center; gap: 14px;">
+            <div style="font-size: 32px;">❌</div>
+            <div>
+                <h4 style="color: var(--danger); margin-bottom: 4px;">@Loc["HouseNotFoundTitle"]</h4>
+                <p style="margin: 0; color: var(--muted); font-size: 16px;">
+                    @Loc["HouseNotFoundDesc"]
+                </p>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    var upiString = $"upi://pay?pa={Model.PanchayatUpiId}&pn={Uri.EscapeDataString(Model.PanchayatName)}&am={Model.TotalPending}&cu=INR&tn={Uri.EscapeDataString("Tax " + Model.HouseNo)}";
+    var qrUrl = $"https://api.qrserver.com/v1/create-qr-code/?size=180x180&data={Uri.EscapeDataString(upiString)}";
+
+    <div class="card-brutal" style="margin-top: 20px; border-width: 3px; background-color: #FFFFFF;">
+        <!-- Header summary -->
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px; border-bottom: 2px dashed #111; padding-bottom: 16px; margin-bottom: 16px;">
+            <div>
+                <span class="chip-brutal chip-partial" style="margin-bottom: 8px;">@Loc["HouseNo"]: @Model.HouseNo</span>
+                <h3 style="margin: 4px 0;">@Model.MaskedOwnerName</h3>
+                <div style="color: var(--muted); font-size: 16px;">@Loc["Ward"]: <strong>@Model.Ward</strong></div>
+            </div>
+            <div style="text-align: right;">
+                <div style="font-size: 15px; font-weight: bold; color: var(--muted);">@Loc["TotalPayable"]</div>
+                <div style="font-size: 36px; font-weight: 800; color: @(Model.TotalPending > 0 ? "var(--danger)" : "var(--leaf)");">
+                    ₹@Model.TotalPending.ToString("N0")
+                </div>
+            </div>
+        </div>
+
+        @if (Model.TotalPending > 0)
+        {
+            <!-- Itemized dues breakdown -->
+            <div style="background-color: var(--bg); border: 2px solid #111; border-radius: 12px; padding: 14px 18px; margin-bottom: 16px;">
+                <div style="font-weight: 800; margin-bottom: 8px; font-size: 17px;">@Loc["PendingDuesBreakdownTitle"]</div>
+                <ul style="margin: 0; padding-left: 20px;">
+                    @foreach (var item in Model.PendingTaxNames)
+                    {
+                        <li style="margin-bottom: 4px; font-weight: 600;">@item</li>
+                    }
+                </ul>
+                <div style="margin-top: 10px; font-size: 15px; color: var(--muted); display: flex; gap: 20px; flex-wrap: wrap;">
+                    <span>@Loc["PrincipalAmountLabel"] <strong>₹@Model.PrincipalPending.ToString("N0")</strong></span>
+                    <span>@Loc["LateFeeLabel"] <strong style="color: var(--danger);">₹@Model.LateFeePending.ToString("N0")</strong></span>
+                </div>
+            </div>
+
+            <!-- Primary Action Buttons: Online UPI or Pay at Office -->
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px;">
+                <button type="button" class="btn-brutal btn-turmeric-brutal" id="btnToggleOnlinePay" onclick="toggleOnlinePaymentBox()" style="flex: 1; min-width: 240px; font-size: 17px;">
+                    📲 @Loc["PayOnlineViaUpi"]
+                </button>
+                <a href="tel:@Model.OfficePhone" class="btn-brutal" style="flex: 1; min-width: 200px; text-align: center; font-size: 15px;">
+                    📞 @Loc["PayAtOfficeNote"] (@Model.OfficePhone)
+                </a>
+            </div>
+
+            <!-- Expandable Online UPI Payment Box -->
+            <div id="onlinePaymentBox" style="display: none; background: #FFFDF8; border: 3px solid #111; border-radius: 14px; padding: 22px; box-shadow: 4px 4px 0 #111; margin-bottom: 16px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px dashed #111; padding-bottom: 12px; margin-bottom: 16px;">
+                    <div style="font-weight: 800; font-size: 18px; display: flex; align-items: center; gap: 8px;">
+                        <span>📱</span> @Loc["ScanUpiQrCode"]
+                    </div>
+                    <span class="chip-brutal chip-paid" style="font-size: 13px;">BHARAT UPI / QR</span>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; align-items: start;">
+                    <!-- QR Code & App launcher -->
+                    <div style="text-align: center; background: #FFF; border: 2px solid #111; border-radius: 12px; padding: 16px; box-shadow: 2px 2px 0 #111;">
+                        <img src="@qrUrl" alt="UPI QR Code" style="width: 170px; height: 170px; display: block; margin: 0 auto 10px auto; border-radius: 8px; border: 1px solid #ddd;" />
+                        <div style="font-size: 13px; font-weight: 800; margin-bottom: 4px; color: var(--muted);">@Loc["PanchayatUpiId"]</div>
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 6px;">
+                            <code style="font-size: 14px; background: #eee; padding: 3px 8px; border-radius: 6px; font-weight: bold; border: 1px solid #ccc;">@Model.PanchayatUpiId</code>
+                            <button type="button" class="btn-brutal btn-sm-brutal" onclick="copyUpiId('@Model.PanchayatUpiId', this)" style="padding: 2px 8px; font-size: 12px;">
+                                @Loc["CopyUpi"]
+                            </button>
+                        </div>
+                        <a href="@upiString" class="btn-brutal btn-primary-brutal btn-sm-brutal" style="display: inline-block; margin-top: 12px; width: 100%; text-decoration: none; font-size: 13px;">
+                            ⚡ @Loc["OpenUpiApps"]
+                        </a>
+                    </div>
+
+                    <!-- Payment Confirmation Form -->
+                    <form id="onlinePayForm" onsubmit="submitOnlinePayment(event)" style="display: flex; flex-direction: column; gap: 12px;">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="HouseId" value="@Model.HouseId" />
+
+                        <div class="form-group-brutal" style="margin-bottom: 0;">
+                            <label class="form-label-brutal" style="font-size: 14px;">@Loc["PayerName"]</label>
+                            <input type="text" name="PayerName" class="form-input-brutal" value="@Model.MaskedOwnerName?.Replace("...", "")" placeholder="@Loc["PayerName"]" required style="padding: 8px 12px; font-size: 15px;" />
+                        </div>
+
+                        <div class="form-group-brutal" style="margin-bottom: 0;">
+                            <label class="form-label-brutal" style="font-size: 14px;">@Loc["PayerMobile"]</label>
+                            <input type="tel" name="PayerMobile" class="form-input-brutal" value="@Model.Mobile" placeholder="e.g. 9825012345" required style="padding: 8px 12px; font-size: 15px;" />
+                        </div>
+
+                        <div class="form-group-brutal" style="margin-bottom: 0;">
+                            <label class="form-label-brutal" style="font-size: 14px;">@Loc["PaymentAmount"]</label>
+                            <input type="number" step="1" min="1" max="@Model.TotalPending" name="Amount" class="form-input-brutal" value="@((int)Model.TotalPending)" required style="padding: 8px 12px; font-size: 16px; font-weight: bold; background: #FFFFEE;" />
+                        </div>
+
+                        <div class="form-group-brutal" style="margin-bottom: 0;">
+                            <label class="form-label-brutal" style="font-size: 14px;">@Loc["UtrNo"]</label>
+                            <input type="text" name="UpiRef" class="form-input-brutal" value="UPI@(DateTime.Now.ToString("yyMMddHHmmss"))" placeholder="12-digit UPI Reference / UTR" required style="padding: 8px 12px; font-size: 14px;" />
+                        </div>
+
+                        <div style="font-size: 12px; color: var(--muted); margin-top: 2px;">
+                            💡 @Loc["SimulatePaymentHelp"]
+                        </div>
+
+                        <button type="submit" id="btnConfirmPay" class="btn-brutal btn-primary-brutal" style="margin-top: 4px; font-size: 16px; padding: 12px;">
+                            ✅ @Loc["ConfirmAndGetReceipt"]
+                        </button>
+                        
+                        <div id="onlinePayAlert" style="display: none; padding: 10px; border-radius: 8px; font-size: 14px; font-weight: bold;"></div>
+                    </form>
+                </div>
+
+                <div style="margin-top: 14px; padding-top: 10px; border-top: 1px dashed #ccc; font-size: 13px; color: var(--muted); text-align: center;">
+                    🔒 @Loc["InstantReceiptNote"]
+                </div>
+            </div>
+
+            <!-- Office timing note -->
+            <div style="font-size: 14px; color: var(--muted); display: flex; align-items: center; gap: 8px;">
+                <span>🏛️</span>
+                <span>@Model.OfficeAddress (@Model.OfficeTimings)</span>
+            </div>
+        }
+        else
+        {
+            <div style="background-color: #EAF8EC; border: 2px solid var(--leaf); border-radius: 12px; padding: 16px; text-align: center;">
+                <div style="font-size: 32px;">🎉</div>
+                <h4 style="color: var(--leaf); margin: 6px 0;">@Loc["AllPaidTitle"]</h4>
+                <p style="margin: 0; font-size: 16px; color: var(--muted);">
+                    @Loc["AllPaidDesc"]
+                </p>
+            </div>
+        }
+    </div>
+}

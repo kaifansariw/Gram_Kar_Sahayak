@@ -1,0 +1,205 @@
+@model GramKar.Models.ViewModels.ReceiptViewModel
+@{
+    ViewData["Title"] = Loc["ReceiptViewTitle"] + " - " + Model.ReceiptNo;
+    bool isAdmin = User.IsInRole("Admin");
+}
+
+<div class="no-print" style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+    <a asp-action="Index" class="btn-brutal btn-sm-brutal">
+        ← @Loc["ViewAllReceipts"]
+    </a>
+
+    <div style="display: flex; gap: 10px;">
+        <button type="button" class="btn-brutal btn-turmeric-brutal" onclick="window.print()">
+            @Loc["PrintReceiptBtn"]
+        </button>
+
+        @if (isAdmin && !Model.IsCancelled)
+        {
+            <button type="button" class="btn-brutal btn-danger-brutal btn-sm-brutal" onclick="openCancelModal()">
+                @Loc["CancelReceiptBtn"]
+            </button>
+        }
+    </div>
+</div>
+
+<!-- OFFICIAL PRINTABLE A5 / A4 RECEIPT CONTAINER -->
+<div class="card-brutal" style="max-width: 780px; margin: 0 auto; padding: 30px; background-color: #ffffff; border: 3px solid #111; position: relative;">
+    <!-- Top Warli Border Strip -->
+    <div style="height: 20px; background-image: url('/img/warli_strip.svg'); background-repeat: repeat-x; background-size: contain; border-bottom: 2px solid #111; margin: -30px -30px 20px -30px; background-color: var(--turmeric);"></div>
+
+    @if (Model.IsCancelled)
+    {
+        <div style="border: 3px dashed var(--danger); background-color: #FFF2F2; padding: 12px; text-align: center; margin-bottom: 20px; border-radius: 8px;">
+            <h2 style="color: var(--danger); margin: 0; font-size: 24px;">@Loc["CancelledBanner"]</h2>
+            <div style="font-size: 15px; color: var(--muted); margin-top: 4px;">
+                @Loc["CancelReasonLabel"] <strong>@Model.CancelReason</strong>
+            </div>
+        </div>
+    }
+
+    <!-- Header with Emblem & Panchayat Details -->
+    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 3px solid #111; padding-bottom: 18px; margin-bottom: 20px;">
+        <div style="width: 75px; height: 75px; flex-shrink: 0;">
+            <img src="~/img/emblem.svg" alt="Panchayat Seal" style="width: 100%; height: 100%;" />
+        </div>
+        <div style="text-align: center; flex: 1; padding: 0 14px;">
+            <h2 style="font-size: 26px; margin: 0 0 4px 0; color: #111;">@Loc["PanchayatSubtitle"]</h2>
+            <div style="font-size: 16px; font-weight: 700; color: var(--muted);">
+                @Model.Taluka, @Model.District, @Loc["StateGujarat"]
+            </div>
+            <div style="font-size: 18px; font-weight: 800; margin-top: 6px; text-decoration: underline; letter-spacing: 1px;">
+                @Loc["ReceiptViewTitle"]
+            </div>
+        </div>
+        <div style="text-align: right; font-size: 15px;">
+            <div style="font-weight: 800;">@Loc["FormNo4"]</div>
+            <div style="color: var(--muted); font-size: 13px;">@Loc["Rule24"]</div>
+        </div>
+    </div>
+
+    <!-- Receipt Meta (Receipt No & Date) -->
+    <div style="display: flex; justify-content: space-between; margin-bottom: 18px; font-size: 17px; font-weight: 700;">
+        <div>
+            @Loc["ReceiptNoCol"]: <strong style="font-size: 19px; color: var(--primary);">@Model.ReceiptNo</strong>
+        </div>
+        <div>
+            @Loc["DateCol"]: <strong>@Model.PaymentDate.ToString("dd/MM/yyyy HH:mm")</strong>
+        </div>
+    </div>
+
+    <!-- Household & Taxpayer Details -->
+    <div style="background-color: var(--bg); border: 2px solid #111; border-radius: 10px; padding: 14px 18px; margin-bottom: 20px;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 17px;">
+            <div>
+                @Loc["HouseNo"]: <strong>@Model.HouseNo</strong>
+            </div>
+            <div>
+                @Loc["Ward"]: <strong>@Model.Ward</strong>
+            </div>
+            <div style="grid-column: span 2;">
+                @Loc["OwnerName"]: <strong>@Model.OwnerName</strong>
+                @if (!string.IsNullOrEmpty(Model.GuardianName))
+                {
+                    <span style="color: var(--muted);"> (@Loc["FatherOrHusband"] @Model.GuardianName)</span>
+                }
+            </div>
+            @if (!string.IsNullOrEmpty(Model.Mobile))
+            {
+                <div>
+                    @Loc["Mobile"]: <strong>@Model.Mobile</strong>
+                </div>
+            }
+            <div>
+                @Loc["PaymentModeCol"]: <strong>@(Model.Mode == "Cash" ? Loc["ModeCash"] : Model.Mode == "UPI" ? Loc["ModeUPI"] : Loc["ModeCheque"])</strong> @(string.IsNullOrEmpty(Model.Reference) ? "" : $"({Model.Reference})")
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Items Table -->
+    <div class="table-container-brutal" style="box-shadow: none; border-width: 2px; margin-bottom: 18px;">
+        <table class="table-brutal" style="font-size: 16px;">
+            <thead>
+                <tr>
+                    <th style="width: 50px;">#</th>
+                    <th>@Loc["ReceiptParticulars"]</th>
+                    <th>@Loc["FinYearCol"]</th>
+                    <th style="text-align: right;">@Loc["PrincipalCol"] (₹)</th>
+                    <th style="text-align: right;">@Loc["LateFee"] (₹)</th>
+                    <th style="text-align: right;">@Loc["AmountCol"] (₹)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{ int idx = 1; }
+                @foreach (var item in Model.Items)
+                {
+                    <tr>
+                        <td>@(idx++)</td>
+                        <td><strong>@Loc.LocalizeTaxName(item.TaxName)</strong></td>
+                        <td>@item.FinancialYear</td>
+                        <td style="text-align: right;">₹@item.PrincipalPaid.ToString("N2")</td>
+                        <td style="text-align: right;">₹@item.LateFeePaid.ToString("N2")</td>
+                        <td style="text-align: right; font-weight: 800;">₹@item.ItemTotal.ToString("N2")</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr style="background-color: var(--turmeric); font-weight: 800; font-size: 18px;">
+                    <td colspan="5" style="text-align: right; border-top: 2px solid #111;">
+                        @Loc["TotalReceived"]
+                    </td>
+                    <td style="text-align: right; border-top: 2px solid #111; color: var(--ink);">
+                        ₹@Model.TotalAmount.ToString("N2")
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <!-- Amount In Words & Remaining balance -->
+    <div style="font-size: 16px; margin-bottom: 24px; padding: 10px 14px; background: #FFFDF8; border: 1.5px dashed #111; border-radius: 8px;">
+        <div>
+            @Loc["InWordsLabel"] <strong>@Loc.ConvertAmountToWords((long)Model.TotalAmount)</strong>
+        </div>
+        <div style="margin-top: 6px; font-size: 15px; color: var(--muted);">
+            @Loc["RemainingBalanceAfterReceipt"] <strong>₹@Model.RemainingHouseholdBalance.ToString("N2")</strong>
+        </div>
+    </div>
+
+    <!-- Signatures & Authority -->
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 40px; padding-top: 20px; font-size: 16px;">
+        <div style="text-align: center;">
+            <div style="border-top: 2px solid #111; width: 180px; padding-top: 6px;">
+                @Loc["TaxpayerSign"]
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            <div style="font-weight: 800; margin-bottom: 2px;">@Model.ReceivedBy</div>
+            <div style="border-top: 2px solid #111; width: 220px; padding-top: 6px;">
+                @Loc["AuthorizedSign"]<br />
+                <span style="font-size: 13px; color: var(--muted);">@Loc["PanchayatSubtitle"]</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Warli Strip -->
+    <div style="height: 16px; background-image: url('/img/warli_strip.svg'); background-repeat: repeat-x; background-size: contain; border-top: 2px solid #111; margin: 30px -30px -30px -30px; background-color: var(--turmeric);"></div>
+</div>
+
+<!-- Cancel Modal (Admin only) -->
+<div id="cancelModal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1000; align-items: center; justify-content: center;">
+    <div class="card-brutal" style="max-width: 480px; width: 90%; background: #ffffff; padding: 26px;">
+        <h3 style="color: var(--danger); margin-bottom: 8px;">⚠️ @Loc["CancelModalTitle"]</h3>
+        <p style="font-size: 16px; color: var(--muted); margin-bottom: 18px;">
+            @Loc["CancelModalDesc"]
+        </p>
+        <form asp-action="Cancel" method="post">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="id" value="@Model.PaymentId" />
+            <div class="form-group-brutal">
+                <label class="form-label-brutal">@Loc["CancelReasonLabel"] *</label>
+                <textarea name="reason" class="form-input-brutal" style="min-height: 80px;" required></textarea>
+            </div>
+            <div style="display: flex; gap: 10px;">
+                <button type="submit" class="btn-brutal btn-danger-brutal" style="flex: 1;">
+                    @Loc["Cancel"]
+                </button>
+                <button type="button" class="btn-brutal" style="flex: 1;" onclick="closeCancelModal()">
+                    @Loc["Back"]
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function openCancelModal() {
+            document.getElementById('cancelModal').style.display = 'flex';
+        }
+        function closeCancelModal() {
+            document.getElementById('cancelModal').style.display = 'none';
+        }
+    </script>
+}

@@ -1,0 +1,210 @@
+@model GramKar.Models.ViewModels.DashboardViewModel
+@{
+    ViewData["Title"] = Loc["Dashboard"];
+}
+
+<!-- Dashboard Header & Greeting -->
+<div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 30px;">
+    <div>
+        <h1 style="font-size: 34px; margin-bottom: 6px;">
+            @Loc["Welcome"], <mark class="hero-mark">@Model.UserFullName</mark>
+        </h1>
+        <div style="font-size: 17px; color: var(--muted); font-weight: 700;">
+            @Loc["PanchayatSubtitle"] | @Loc["FinancialYear"]: <strong>@Model.CurrentFinancialYear</strong>
+        </div>
+    </div>
+    <!-- <div style="display: flex; gap: 10px; align-items: center;">
+        <span class="chip-brutal @(Model.UserRole == "Admin" ? "chip-paid" : "chip-partial")">
+            @(Model.UserRole == "Admin" ? Loc["AdminRole"] : Loc["SarpanchRole"])
+        </span>
+    </div> -->
+</div>
+
+<!-- 4 Big Stat Cards -->
+<div class="grid-4" style="margin-bottom: 30px;">
+    <!-- Stat 1: Collected Today -->
+    <div class="card-brutal" style="padding: 20px;">
+        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 12px;">
+            <div class="icon-square leaf">
+                💵
+            </div>
+            <div style="font-size: 16px; font-weight: 800; color: var(--muted);">
+                @Loc["CollectedToday"]
+            </div>
+        </div>
+        <div style="font-size: 30px; font-weight: 800; color: var(--leaf);">
+            ₹@Model.CollectedToday.ToString("N0")
+        </div>
+    </div>
+
+    <!-- Stat 2: Collected This Year -->
+    <div class="card-brutal" style="padding: 20px;">
+        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 12px;">
+            <div class="icon-square sky">
+                📈
+            </div>
+            <div style="font-size: 16px; font-weight: 800; color: var(--muted);">
+                @Loc["CollectedThisYear"]
+            </div>
+        </div>
+        <div style="font-size: 30px; font-weight: 800; color: var(--highlight);">
+            ₹@Model.CollectedThisYear.ToString("N0")
+        </div>
+    </div>
+
+    <!-- Stat 3: Total Pending -->
+    <div class="card-brutal" style="padding: 20px;">
+        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 12px;">
+            <div class="icon-square primary">
+                ⏳
+            </div>
+            <div style="font-size: 16px; font-weight: 800; color: var(--muted);">
+                @Loc["TotalPending"]
+            </div>
+        </div>
+        <div style="font-size: 30px; font-weight: 800; color: var(--danger);">
+            ₹@Model.TotalPending.ToString("N0")
+        </div>
+    </div>
+
+    <!-- Stat 4: Defaulters Count -->
+    <div class="card-brutal" style="padding: 20px;">
+        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 12px;">
+            <div class="icon-square turmeric">
+                ⚠️
+            </div>
+            <div style="font-size: 16px; font-weight: 800; color: var(--muted);">
+                @Loc["DefaulterHouses"]
+            </div>
+        </div>
+        <div style="font-size: 30px; font-weight: 800; color: var(--ink);">
+            @Model.DefaulterCount <span style="font-size: 16px; color: var(--muted); font-weight: 600;">/ @Model.TotalHouseholdCount @Loc["HousesOutOf"]</span>
+        </div>
+    </div>
+</div>
+
+<!-- Collection vs Pending Progress Visual -->
+<div class="card-brutal" style="margin-bottom: 30px; padding: 24px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-weight: 800;">
+        <span style="font-size: 19px;">@Loc["CollectionProgress"]</span>
+        <span style="font-size: 17px;">@Loc["CollectionPctLabel"] <strong>@Model.CollectionPercentage%</strong></span>
+    </div>
+
+    <!-- Thick Neubrutalism Progress Bar -->
+    <div class="progress-brutal">
+        <div class="progress-brutal-fill" style="width: @Model.CollectionPercentage%;"></div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 15px; font-weight: 700;">
+        <span style="color: var(--leaf);">● @Loc["CollectedLabel"] ₹@Model.CollectedThisYear.ToString("N0")</span>
+        <span style="color: var(--danger);">● @Loc["PendingLabel"] ₹@Model.TotalPending.ToString("N0")</span>
+    </div>
+</div>
+
+<!-- 4 Big Action Shortcut Tiles -->
+<div style="margin-bottom: 30px;">
+    <h2 style="font-size: 26px; margin-bottom: 18px;">@Loc["QuickActions"]</h2>
+    <div class="grid-@(Model.UserRole == "Admin" ? "4" : "2")">
+        @if (Model.UserRole == "Admin")
+        {
+            <!-- Action 1: Record Payment -->
+            <a asp-controller="Payments" asp-action="Create" class="card-brutal" style="text-decoration: none; color: inherit; display: block; border-left: 6px solid var(--leaf); transition: transform .08s;">
+                <div style="font-size: 32px; margin-bottom: 8px;">💰</div>
+                <h3 style="font-size: 20px; margin-bottom: 4px;">@Loc["RecordPayment"]</h3>
+                <p style="margin: 0; font-size: 15px; color: var(--muted);">@Loc["RecordPaymentTileDesc"]</p>
+            </a>
+        }
+
+        <!-- Action 2: Pending Defaulters Report -->
+        <a asp-controller="Reports" asp-action="Pending" class="card-brutal" style="text-decoration: none; color: inherit; display: block; border-left: 6px solid var(--danger); transition: transform .08s;">
+            <div style="font-size: 32px; margin-bottom: 8px;">⚠️</div>
+            <h3 style="font-size: 20px; margin-bottom: 4px;">@Loc["PendingDues"]</h3>
+            <p style="margin: 0; font-size: 15px; color: var(--muted);">@Loc["PendingListTileDesc"]</p>
+        </a>
+
+        <!-- Action 3: Households List -->
+        <a asp-controller="Households" asp-action="Index" class="card-brutal" style="text-decoration: none; color: inherit; display: block; border-left: 6px solid var(--highlight); transition: transform .08s;">
+            <div style="font-size: 32px; margin-bottom: 8px;">🏠</div>
+            <h3 style="font-size: 20px; margin-bottom: 4px;">@Loc["Households"]</h3>
+            <p style="margin: 0; font-size: 15px; color: var(--muted);">@Loc["HouseholdsTileDesc"]</p>
+        </a>
+
+        @if (Model.UserRole == "Admin")
+        {
+            <!-- Action 4: Tax Settings -->
+            <a asp-controller="Settings" asp-action="TaxTypes" class="card-brutal" style="text-decoration: none; color: inherit; display: block; border-left: 6px solid var(--turmeric); transition: transform .08s;">
+                <div style="font-size: 32px; margin-bottom: 8px;">⚙️</div>
+                <h3 style="font-size: 20px; margin-bottom: 4px;">@Loc["TaxSettings"]</h3>
+                <p style="margin: 0; font-size: 15px; color: var(--muted);">@Loc["TaxSettingsTileDesc"]</p>
+            </a>
+        }
+    </div>
+</div>
+
+<!-- Recent Payments Table -->
+<div class="card-brutal" style="padding: 24px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; flex-wrap: wrap; gap: 10px;">
+        <h2 style="font-size: 24px; margin: 0;">@Loc["RecentPayments"]</h2>
+        <a asp-controller="Payments" asp-action="Index" class="btn-brutal btn-sm-brutal">
+            @Loc["ViewAllReceipts"]
+        </a>
+    </div>
+
+    <div class="table-container-brutal" style="box-shadow: none; margin-bottom: 0;">
+        <table class="table-brutal">
+            <thead>
+                <tr>
+                    <th>@Loc["ReceiptNo"]</th>
+                    <th>@Loc["Date"]</th>
+                    <th>@Loc["HouseNo"]</th>
+                    <th>@Loc["OwnerName"]</th>
+                    <th>@Loc["PaymentMode"]</th>
+                    <th>@Loc["Amount"]</th>
+                    <th>@Loc["Status"]</th>
+                    <th>@Loc["Action"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.RecentPayments.Any())
+                {
+                    @foreach (var p in Model.RecentPayments)
+                    {
+                        <tr>
+                            <td><strong>@p.ReceiptNo</strong></td>
+                            <td>@p.PaymentDate.ToString("dd/MM/yyyy HH:mm")</td>
+                            <td><span class="chip-brutal chip-partial">@p.Household?.HouseNo</span></td>
+                            <td>@p.Household?.OwnerName</td>
+                            <td>
+                                @(p.Mode == "Cash" ? Loc["ModeCash"] : p.Mode == "UPI" ? Loc["ModeUPI"] : Loc["ModeCheque"])
+                            </td>
+                            <td style="font-weight: 800; color: var(--leaf);">₹@p.TotalAmount.ToString("N2")</td>
+                            <td>
+                                @if (p.IsCancelled)
+                                {
+                                    <span class="chip-brutal chip-cancelled">@Loc["Cancelled"]</span>
+                                }
+                                else
+                                {
+                                    <span class="chip-brutal chip-paid">@Loc["Paid"]</span>
+                                }
+                            </td>
+                            <td>
+                                <a asp-controller="Payments" asp-action="Receipt" asp-route-id="@p.PaymentId" class="btn-brutal btn-sm-brutal">
+                                    @Loc["ViewReceiptBtn"]
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="8" style="text-align: center; padding: 24px; color: var(--muted);">
+                            @Loc["NoPaymentsYet"]
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,182 @@
+@model GramKar.Models.ViewModels.HouseholdListViewModel
+@{
+    ViewData["Title"] = Loc["Households"];
+    bool isAdmin = User.IsInRole("Admin");
+}
+
+<div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
+    <div>
+        <h1 style="font-size: 32px; margin: 0;">🏠 @Loc["Households"]</h1>
+        <div style="color: var(--muted); font-size: 16px;">@Loc["HouseholdsPageSubtitle"]</div>
+    </div>
+    @if (isAdmin)
+    {
+        <a asp-controller="Households" asp-action="Create" class="btn-brutal btn-primary-brutal">
+            @Loc["AddHousehold"]
+        </a>
+    }
+</div>
+
+<!-- Search & Ward Filter Card -->
+<div class="card-brutal" style="padding: 20px; margin-bottom: 24px;">
+    <form method="get" asp-action="Index" style="display: flex; gap: 14px; flex-wrap: wrap; align-items: center;">
+        <div style="flex: 2; min-width: 240px;">
+            <input type="text" name="search" value="@Model.SearchQuery" placeholder="@Loc["SearchHouseholdPlaceholder"]"
+                   class="form-input-brutal" style="min-height: 48px;" />
+        </div>
+
+        <div style="flex: 1; min-width: 180px;">
+            <select name="ward" class="form-select-brutal" style="min-height: 48px;">
+                <option value="All">@Loc["AllWards"]</option>
+                @foreach (var w in Model.AvailableWards)
+                {
+                    <option value="@w" selected="@(Model.WardFilter == w)">@w</option>
+                }
+            </select>
+        </div>
+
+        <div>
+            <button type="submit" class="btn-brutal btn-turmeric-brutal" style="min-height: 48px;">
+                @Loc["Search"]
+            </button>
+            @if (!string.IsNullOrEmpty(Model.SearchQuery) || (!string.IsNullOrEmpty(Model.WardFilter) && Model.WardFilter != "All"))
+            {
+                <a asp-action="Index" class="btn-brutal btn-sm-brutal" style="min-height: 48px;">
+                    @Loc["Reset"] ✖
+                </a>
+            }
+        </div>
+    </form>
+</div>
+
+<!-- Households Table -->
+<div class="table-container-brutal">
+    <table class="table-brutal">
+        <thead>
+            <tr>
+                <th style="white-space: nowrap;">@Loc["HouseNo"]</th>
+                <th style="white-space: nowrap;">@Loc["OwnerName"]</th>
+                <th style="white-space: nowrap;">@Loc["Ward"]</th>
+                <th style="white-space: nowrap;">@Loc["PropertyType"]</th>
+                <th style="white-space: nowrap;">@Loc["WaterConnectionCol"]</th>
+                <th style="white-space: nowrap;">@Loc["PendingAmountCol"]</th>
+                <th style="white-space: nowrap;">@Loc["Status"]</th>
+                <th style="white-space: nowrap;">@Loc["Action"]</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Households.Any())
+            {
+                @foreach (var h in Model.Households)
+                {
+                    <tr>
+                        <td style="white-space: nowrap;">
+                            <span class="chip-brutal chip-partial" style="font-size: 15px; padding: 4px 10px;">
+                                @h.HouseNo
+                            </span>
+                        </td>
+                        <td>
+                            <div style="font-weight: 800; font-size: 16px; color: var(--ink);">@h.OwnerName</div>
+                            @if (!string.IsNullOrEmpty(h.GuardianName))
+                            {
+                                <div style="font-size: 13px; color: #374151; font-weight: 600; margin-top: 2px;">
+                                    @Loc["FatherOrHusband"] <span style="color: #111;">@h.GuardianName</span>
+                                </div>
+                            }
+                            @if (!string.IsNullOrEmpty(h.Mobile))
+                            {
+                                <div style="margin-top: 3px;">
+                                    <a href="tel:@h.Mobile" style="text-decoration: none; font-size: 13px; font-weight: 700; color: var(--highlight);">
+                                        @h.Mobile
+                                    </a>
+                                </div>
+                            }
+                        </td>
+                        <td style="white-space: nowrap; font-weight: 700; color: #111;">@h.Ward</td>
+                        <td style="white-space: nowrap;">
+                            @if (h.PropertyType == "Shop")
+                            {
+                                <span class="chip-brutal chip-partial" style="font-size: 13px; padding: 3px 10px;">@Loc["Shop"]</span>
+                            }
+                            else
+                            {
+                                <span class="chip-brutal" style="background: #ffffff; color: #111; font-size: 13px; padding: 3px 10px;">@Loc["Residential"]</span>
+                            }
+                        </td>
+                        <td style="white-space: nowrap;">
+                            @if (h.HasWater)
+                            {
+                                <span class="chip-brutal chip-paid" style="font-size: 13px; padding: 3px 10px;">@Loc["Yes"]</span>
+                            }
+                            else
+                            {
+                                <span class="chip-brutal chip-cancelled" style="font-size: 13px; padding: 3px 10px;">@Loc["No"]</span>
+                            }
+                        </td>
+                        <td style="white-space: nowrap;">
+                            @if (h.PendingAmount > 0)
+                            {
+                                <div style="font-weight: 800; font-size: 18px; color: var(--danger);">
+                                    ₹@h.PendingAmount.ToString("N0")
+                                </div>
+                                @if (h.HasOverdue)
+                                {
+                                    <div style="margin-top: 3px;">
+                                        <span class="chip-brutal chip-pending" style="font-size: 11px; padding: 2px 8px;">@Loc["OverdueBadge"]</span>
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <span class="chip-brutal chip-paid" style="font-size: 13px; padding: 3px 10px;">@Loc["ClearedBadge"]</span>
+                            }
+                        </td>
+                        <td style="white-space: nowrap;">
+                            @if (h.IsActive)
+                            {
+                                <span class="chip-brutal chip-paid" style="font-size: 13px; padding: 3px 10px;">@Loc["Active"]</span>
+                            }
+                            else
+                            {
+                                <span class="chip-brutal chip-cancelled" style="font-size: 13px; padding: 3px 10px;">@Loc["Inactive"]</span>
+                            }
+                        </td>
+                        <td style="white-space: nowrap;">
+                            <div style="display: flex; gap: 8px; align-items: center;">
+                                <a asp-action="Details" asp-route-id="@h.HouseId" class="btn-brutal btn-sm-brutal" style="min-height: 38px; padding: 0 14px; font-weight: 700;">
+                                    @Loc["Details"]
+                                </a>
+                                @if (isAdmin)
+                                {
+                                    @if (h.PendingAmount > 0)
+                                    {
+                                        <a asp-controller="Payments" asp-action="Create" asp-route-houseId="@h.HouseId" class="btn-brutal btn-sm-brutal btn-success-brutal" style="min-height: 38px; padding: 0 14px; font-weight: 700;">
+                                            @Loc["CollectBtn"]
+                                        </a>
+                                    }
+                                    <a asp-action="Edit" asp-route-id="@h.HouseId" class="btn-brutal btn-sm-brutal btn-turmeric-brutal" style="min-height: 38px; padding: 0 12px; font-weight: 700;">
+                                        @Loc["Edit"]
+                                    </a>
+                                    <form asp-action="ToggleStatus" asp-route-id="@h.HouseId" method="post" style="display:inline; margin: 0;" onsubmit="return confirm('Toggle status?');">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" class="btn-brutal btn-sm-brutal @(h.IsActive ? "btn-danger-brutal" : "btn-success-brutal")" style="min-height: 38px; padding: 0 12px; font-weight: 700;">
+                                            @(h.IsActive ? Loc["Deactivate"] : Loc["Activate"])
+                                        </button>
+                                    </form>
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="8" style="text-align: center; padding: 30px; color: var(--muted);">
+                        @Loc["NoHouseholdsFound"]
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,107 @@
+@model GramKar.Models.Entities.PanchayatSetting
+@{
+    ViewData["Title"] = Loc["PanchayatSettingsTitle"];
+}
+
+<div style="max-width: 720px; margin: 0 auto;">
+    <div style="margin-bottom: 20px;">
+        <a asp-action="TaxTypes" class="btn-brutal btn-sm-brutal">
+            ← @Loc["BackToTaxRules"]
+        </a>
+    </div>
+
+    <div class="card-brutal" style="padding: 32px;">
+        <h2 style="font-size: 28px; margin-bottom: 8px;">🏛️ @Loc["PanchayatSettingsTitle"]</h2>
+        <p style="color: var(--muted); font-size: 16px; margin-bottom: 24px;">
+            @Loc["PanchayatSettingsSubtitle"]
+        </p>
+
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div class="toast-brutal toast-error">
+                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    <div>@error.ErrorMessage</div>
+                }
+            </div>
+        }
+
+        <form asp-action="Panchayat" method="post">
+            @Html.AntiForgeryToken()
+            <input type="hidden" asp-for="SettingId" />
+
+            <div class="form-group-brutal">
+                <label asp-for="PanchayatName" class="form-label-brutal">@Loc["PanchayatFullNameLabel"] *</label>
+                <input asp-for="PanchayatName" class="form-input-brutal" required />
+            </div>
+
+            <div class="grid-2">
+                <div class="form-group-brutal">
+                    <label asp-for="VillageName" class="form-label-brutal">@Loc["VillageNameLabel"] *</label>
+                    <input asp-for="VillageName" class="form-input-brutal" required />
+                </div>
+
+                <div class="form-group-brutal">
+                    <label asp-for="CurrentFinancialYear" class="form-label-brutal">@Loc["CurrentFYLabel"] *</label>
+                    <input asp-for="CurrentFinancialYear" class="form-input-brutal" required />
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="form-group-brutal">
+                    <label asp-for="Taluka" class="form-label-brutal">@Loc["TalukaLabel"]</label>
+                    <input asp-for="Taluka" class="form-input-brutal" />
+                </div>
+
+                <div class="form-group-brutal">
+                    <label asp-for="District" class="form-label-brutal">@Loc["DistrictLabel"]</label>
+                    <input asp-for="District" class="form-input-brutal" />
+                </div>
+            </div>
+
+            <div style="border-top: 2px dashed #111; margin: 24px 0; padding-top: 20px;">
+                <h3 style="font-size: 20px; margin-bottom: 14px;">👤 @Loc["SarpanchInfoSection"]</h3>
+
+                <div class="form-group-brutal">
+                    <label asp-for="SarpanchName" class="form-label-brutal">@Loc["SarpanchNameLabel"] *</label>
+                    <input asp-for="SarpanchName" class="form-input-brutal" required />
+                </div>
+
+                <div class="form-group-brutal">
+                    <label asp-for="SarpanchMessage" class="form-label-brutal">@Loc["SarpanchMessageLabel"] *</label>
+                    <textarea asp-for="SarpanchMessage" class="form-input-brutal" style="min-height: 90px;" required></textarea>
+                </div>
+            </div>
+
+            <div style="border-top: 2px dashed #111; margin: 24px 0; padding-top: 20px;">
+                <h3 style="font-size: 20px; margin-bottom: 14px;">📍 @Loc["OfficeContactSection"]</h3>
+
+                <div class="form-group-brutal">
+                    <label asp-for="OfficeAddress" class="form-label-brutal">@Loc["OfficeAddressLabel"]</label>
+                    <input asp-for="OfficeAddress" class="form-input-brutal" />
+                </div>
+
+                <div class="grid-2">
+                    <div class="form-group-brutal">
+                        <label asp-for="OfficeTimings" class="form-label-brutal">@Loc["OfficeTimingsLabel"]</label>
+                        <input asp-for="OfficeTimings" class="form-input-brutal" />
+                    </div>
+
+                    <div class="form-group-brutal">
+                        <label asp-for="OfficePhone" class="form-label-brutal">@Loc["OfficePhoneLabel"]</label>
+                        <input asp-for="OfficePhone" class="form-input-brutal" />
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 14px; margin-top: 24px;">
+                <button type="submit" class="btn-brutal btn-success-brutal" style="flex: 1;">
+                    @Loc["SaveSettings"]
+                </button>
+                <a asp-action="TaxTypes" class="btn-brutal" style="flex: 1;">
+                    @Loc["Cancel"]
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

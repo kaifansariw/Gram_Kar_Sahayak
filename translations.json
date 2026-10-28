@@ -1,0 +1,1712 @@
+{
+  "AppName": {
+    "gu": "ગ્રામ કર સહાયક",
+    "hi": "ग्राम कर सहायक",
+    "en": "Gram Kar Sahayak"
+  },
+  "PanchayatSubtitle": {
+    "gu": "ગ્રામ પંચાયત આણંદપર",
+    "hi": "ग्राम पंचायत आनंदपर",
+    "en": "Gram Panchayat Anandpar"
+  },
+  "Home": {
+    "gu": "મુખ્ય પૃષ્ઠ",
+    "hi": "मुख्य पृष्ठ",
+    "en": "Home"
+  },
+  "Dashboard": {
+    "gu": "ડેશબોર્ડ",
+    "hi": "डैशबोर्ड",
+    "en": "Dashboard"
+  },
+  "Households": {
+    "gu": "ઘર યાદી",
+    "hi": "घरों की सूची",
+    "en": "Households"
+  },
+  "RecordPayment": {
+    "gu": "કર વસૂલાત",
+    "hi": "कर वसूली",
+    "en": "Record Payment"
+  },
+  "PendingDues": {
+    "gu": "બાકી કર યાદી",
+    "hi": "बकाया कर सूची",
+    "en": "Pending Dues"
+  },
+  "TaxSettings": {
+    "gu": "કર નિયમો",
+    "hi": "कर नियम",
+    "en": "Tax Settings"
+  },
+  "Login": {
+    "gu": "લૉગિન",
+    "hi": "लॉगिन",
+    "en": "Login"
+  },
+  "Logout": {
+    "gu": "બહાર નીકળો",
+    "hi": "लॉग आउट",
+    "en": "Logout"
+  },
+  "CheckMyDues": {
+    "gu": "મારો કર તપાસો",
+    "hi": "अपना कर देखें",
+    "en": "Check My Dues"
+  },
+  "Language": {
+    "gu": "ભાષા",
+    "hi": "भाषा",
+    "en": "Language"
+  },
+  "Select": {
+    "gu": "પસંદ કરો",
+    "hi": "चुनें",
+    "en": "Select"
+  },
+  "Services": {
+    "gu": "કર સેવાઓ",
+    "hi": "कर सेवाएं",
+    "en": "Tax Services"
+  },
+  "FAQ": {
+    "gu": "પ્રશ્નોત્તરી",
+    "hi": "प्रश्नोत्तरी",
+    "en": "FAQ"
+  },
+  "DigitalGovBadge": {
+    "gu": "ડિજિટલ ગ્રામ પંચાયત સેવા",
+    "hi": "डिजिटल ग्राम पंचायत सेवा",
+    "en": "Digital Gram Panchayat Service"
+  },
+  "AdminRole": {
+    "gu": "તલાટી કમ મંત્રી (એડમિન)",
+    "hi": "तलाटी कम मंत्री (व्यवस्थापक)",
+    "en": "Talati-cum-Mantri (Admin)"
+  },
+  "SarpanchRole": {
+    "gu": "સરપંચ (દર્શક)",
+    "hi": "सरपंच (दर्शक)",
+    "en": "Sarpanch (Viewer)"
+  },
+  "Save": {
+    "gu": "સાચવો",
+    "hi": "सुरक्षित करें",
+    "en": "Save"
+  },
+  "Cancel": {
+    "gu": "રદ કરો",
+    "hi": "रद्द करें",
+    "en": "Cancel"
+  },
+  "Back": {
+    "gu": "પાછા જાઓ",
+    "hi": "वापस जाएं",
+    "en": "Back"
+  },
+  "Print": {
+    "gu": "પ્રિન્ટ કરો",
+    "hi": "प्रिंट करें",
+    "en": "Print"
+  },
+  "ExportCsv": {
+    "gu": "CSV ડાઉનલોડ",
+    "hi": "CSV डाउनलोड",
+    "en": "Export CSV"
+  },
+  "Search": {
+    "gu": "શોધો",
+    "hi": "खोजें",
+    "en": "Search"
+  },
+  "Reset": {
+    "gu": "રીસેટ",
+    "hi": "रीसेट",
+    "en": "Reset"
+  },
+  "Details": {
+    "gu": "વિગત",
+    "hi": "विवरण",
+    "en": "Details"
+  },
+  "Edit": {
+    "gu": "સુધારો",
+    "hi": "संशोधन करें",
+    "en": "Edit"
+  },
+  "Action": {
+    "gu": "ક્રિયા",
+    "hi": "क्रिया",
+    "en": "Action"
+  },
+  "Status": {
+    "gu": "સ્થિતિ",
+    "hi": "स्थिति",
+    "en": "Status"
+  },
+  "Active": {
+    "gu": "સક્રિય",
+    "hi": "सक्रिय",
+    "en": "Active"
+  },
+  "Inactive": {
+    "gu": "નિષ્ક્રિય",
+    "hi": "निष्क्रिय",
+    "en": "Inactive"
+  },
+  "Deactivate": {
+    "gu": "બંધ કરો",
+    "hi": "निष्क्रिय करें",
+    "en": "Deactivate"
+  },
+  "Activate": {
+    "gu": "ચાલુ કરો",
+    "hi": "सक्रिय करें",
+    "en": "Activate"
+  },
+  "Yes": {
+    "gu": "હા",
+    "hi": "हाँ",
+    "en": "Yes"
+  },
+  "No": {
+    "gu": "ના",
+    "hi": "नहीं",
+    "en": "No"
+  },
+  "All": {
+    "gu": "તમામ",
+    "hi": "सभी",
+    "en": "All"
+  },
+  "Welcome": {
+    "gu": "નમસ્તે",
+    "hi": "नमस्ते",
+    "en": "Welcome"
+  },
+  "ApplyFilter": {
+    "gu": "ફિલ્ટર લાગુ કરો",
+    "hi": "फ़िल्टर लागू करें",
+    "en": "Apply Filter"
+  },
+  "HeroTitle1": {
+    "gu": "ગામનો",
+    "hi": "गांव का",
+    "en": "Pay your village"
+  },
+  "HeroHighlight": {
+    "gu": "કર",
+    "hi": "કર",
+    "en": "tax"
+  },
+  "HeroTitle2": {
+    "gu": "હવે સરળ",
+    "hi": "अब आसान",
+    "en": "the easy way"
+  },
+  "HeroSubtitle": {
+    "gu": "ઘર નંબરથી તરત બાકી કર જુઓ, પંચાયતમાં જમા કરાવો અને પાકી પહોંચ મેળવો.",
+    "hi": "घर नंबर से तुरंत बकाया कर देखें, पंचायत में जमा करें और पक्की रसीद पाएं।",
+    "en": "Check pending dues instantly by house number, pay at the Panchayat office, and get an official receipt."
+  },
+  "StickerReceipt": {
+    "gu": "ત્વરિત પહોંચ",
+    "hi": "तुरंत रसीद",
+    "en": "Instant receipt"
+  },
+  "StickerSafe": {
+    "gu": "સુરક્ષિત રેકોર્ડ",
+    "hi": "सुरक्षित रिकॉर्ड",
+    "en": "Safe records"
+  },
+  "HeroCampusTitle": {
+    "gu": "આણંદપર પંચાયત પરિસર",
+    "hi": "आनंदपर पंचायत परिसर",
+    "en": "Anandpar Panchayat Campus"
+  },
+  "AnyQuestion": {
+    "gu": "કોઈ પ્રશ્ન છે? પંચાયત કચેરીની મુલાકાત લો",
+    "hi": "कोई प्रश्न है? पंचायत कार्यालय आएं",
+    "en": "Have questions? Visit the Panchayat office"
+  },
+  "SarpanchMessageTitle": {
+    "gu": "સરપંચશ્રીનો સંદેશ",
+    "hi": "सरपंच जी का संदेश",
+    "en": "Sarpanch's Message"
+  },
+  "SarpanchDesignation": {
+    "gu": "સરપંચ, ગ્રામ પંચાયત આણંદપર",
+    "hi": "सरपंच, ग्राम पंचायत आनंदपर",
+    "en": "Sarpanch, Gram Panchayat Anandpar"
+  },
+  "SarpanchQuote": {
+    "gu": "ગામનો વિકાસ, સૌનો સાથ. સમયસર કર ભરી આપણા ગામના વિકાસમાં સહભાગી બનો.",
+    "hi": "गांव का विकास, सबका साथ। समय पर कर भरकर गांव के विकास में भागीदार बनें।",
+    "en": "Village development with everyone's support. Pay dues on time to participate in our village progress."
+  },
+  "HowItWorksTitle": {
+    "gu": "આ કેવી રીતે કામ કરે છે?",
+    "hi": "यह कैसे काम करता है?",
+    "en": "How it works"
+  },
+  "Step1Num": {
+    "gu": "01",
+    "hi": "01",
+    "en": "01"
+  },
+  "Step1Title": {
+    "gu": "તમારો ઘર નંબર જણાવો",
+    "hi": "अपना घर नंबर बताएं",
+    "en": "Tell your house number"
+  },
+  "Step1Desc": {
+    "gu": "પંચાયત કચેરીમાં માત્ર તમારો ઘર નંબર અથવા માલિકનું નામ આપો.",
+    "hi": "पंचायत कार्यालय में सिर्फ अपना घर नंबर या मालिक का नाम बताएं।",
+    "en": "Provide your house number or owner name at the Panchayat office."
+  },
+  "Step2Num": {
+    "gu": "02",
+    "hi": "02",
+    "en": "02"
+  },
+  "Step2Title": {
+    "gu": "તમારો બાકી કર સ્પષ્ટ જુઓ",
+    "hi": "अपना बकाया कर स्पष्ट देखें",
+    "en": "See your dues clearly"
+  },
+  "Step2Desc": {
+    "gu": "ઘરવેરો, પાણીવેરો અને લેટ ફીની ચોક્કસ ગણતરી સ્ક્રીન પર જુઓ.",
+    "hi": "मकान कर, पानी कर और लेट फीस की सटीक गणना स्क्रीन पर देखें।",
+    "en": "View house tax, water tax, and automatically computed late fees."
+  },
+  "Step3Num": {
+    "gu": "03",
+    "hi": "03",
+    "en": "03"
+  },
+  "Step3Title": {
+    "gu": "કર ભરો અને પહોંચ મેળવો",
+    "hi": "कर भरें और रसीद पाएं",
+    "en": "Pay and take your receipt"
+  },
+  "Step3Desc": {
+    "gu": "રોકડ, યુપીઆઈ અથવા ચેકથી ચુકવણી કરો અને તરત જ પ્રિન્ટ કરેલી પહોંચ લો.",
+    "hi": "नकद, यूपीआई या चेक से भुगतान करें और तुरंत प्रिंटेड रसीद लें।",
+    "en": "Pay via Cash, UPI or Cheque and immediately receive an official printed receipt."
+  },
+  "FeatureHeaderBadge": {
+    "gu": "મુખ્ય કર સેવાઓ",
+    "hi": "मुख्य कर सेवाएं",
+    "en": "Core Tax Services"
+  },
+  "FeatureHeaderTitle": {
+    "gu": "પંચાયત કર તથા ફી વ્યવસ્થા",
+    "hi": "पंचायत कर एवं शुल्क प्रणाली",
+    "en": "Panchayat Tax & Fee System"
+  },
+  "FeatureHouseTaxTitle": {
+    "gu": "ઘરવેરો",
+    "hi": "मकान कर",
+    "en": "House Tax"
+  },
+  "FeatureHouseTaxDesc": {
+    "gu": "ગામના તમામ રહેણાંક અને વ્યાપારી મકાનો માટે વાર્ષિક મિલકત કર.",
+    "hi": "गांव के सभी आवासीय और व्यावसायिक भवनों के लिए वार्षिक संपत्ति कर।",
+    "en": "Annual property tax for all residential homes and commercial establishments."
+  },
+  "FeatureHouseTaxRate": {
+    "gu": "વાર્ષિક દર: ₹ 600/- થી શરૂ",
+    "hi": "वार्षिक दर: ₹ 600/- से शुरू",
+    "en": "Annual Rate: Starting from ₹ 600/-"
+  },
+  "FeatureWaterTaxTitle": {
+    "gu": "પાણીવેરો",
+    "hi": "पानी कर",
+    "en": "Water Tax"
+  },
+  "FeatureWaterTaxDesc": {
+    "gu": "ઘર સુધી શુદ્ધ પીવાના પાણીના કનેક્શન માટે નિયમિત વાર્ષિક દર.",
+    "hi": "घर तक शुद्ध पेयजल कनेक्शन के लिए नियमित वार्षिक शुल्क।",
+    "en": "Standard annual fee for clean domestic piped water connection."
+  },
+  "FeatureWaterTaxRate": {
+    "gu": "વાર્ષિક દર: ₹ 400/- (નળ જોડાણ)",
+    "hi": "वार्षिक दर: ₹ 400/- (नल कनेक्शन)",
+    "en": "Annual Rate: ₹ 400/- (Tap connection)"
+  },
+  "FeatureReceiptTitle": {
+    "gu": "અધિકૃત પહોંચ",
+    "hi": "पक्की रसीद",
+    "en": "Official Receipt"
+  },
+  "FeatureReceiptDesc": {
+    "gu": "દરેક ચુકવણી માટે વિગતવાર બિલિંગ અને કાયદેસર સહી સાથે પહોંચ.",
+    "hi": "प्रत्येक भुगतान के लिए विस्तृत विवरण और वैध हस्ताक्षर वाली रसीद।",
+    "en": "Instant transparent receipt with breakdown of principal, late fee and clerk signature."
+  },
+  "FeatureReceiptRate": {
+    "gu": "કાયદેસર અને પ્રિન્ટેડ માન્ય પહોંચ",
+    "hi": "वैधानिक और मुद्रित वैध रसीद",
+    "en": "Legal and official printed receipt"
+  },
+  "VillageBandBadge": {
+    "gu": "પારદર્શક વહીવટ",
+    "hi": "पारदर्शी प्रशासन",
+    "en": "Transparent Governance"
+  },
+  "VillageBandTitle": {
+    "gu": "અમે ગામના હિસાબ-કિતાબ પારદર્શક રાખીએ છીએ",
+    "hi": "हम गांव के सभी हिसाब-किताब पारदर्शी रखते हैं",
+    "en": "We keep village accounts completely clear and transparent"
+  },
+  "VillageBandDesc": {
+    "gu": "ડિજિટલ પદ્ધતિથી દરેક રૂપિયાનો સાચો હિસાબ અને ગામનો સર્વાંગી વિકાસ.",
+    "hi": "डिजिटल व्यवस्था से हर रुपये का सही हिसाब और गांव का संपूर्ण विकास।",
+    "en": "Digital accounting ensures every single rupee is accounted for village welfare."
+  },
+  "PanchayatLoginBtn": {
+    "gu": "પંચાયત લૉગિન →",
+    "hi": "पंचायत लॉगिन →",
+    "en": "Panchayat Login →"
+  },
+  "LookupTitle": {
+    "gu": "તમારો બાકી કર ઓનલાઇન તપાસો",
+    "hi": "अपना बकाया कर ऑनलाइन देखें",
+    "en": "Check Your Pending Dues Online"
+  },
+  "LookupSubtitle": {
+    "gu": "પંચાયતમાં ગયા વગર માત્ર ઘર નંબર નાખીને આપનો બાકી કર અને લેટ ફી તરત જાણો.",
+    "hi": "पंचायत जाए बिना सिर्फ घर नंबर दर्ज करके अपना बकाया कर और लेट फीस तुरंत जानें।",
+    "en": "Check your pending taxes and computed late fees instantly by entering your house number."
+  },
+  "HouseNoPlaceholder": {
+    "gu": "ઘર નંબર (દા.ત. PF-01, NV-03)",
+    "hi": "घर नंबर (उदा. PF-01, NV-03)",
+    "en": "House No. (e.g. PF-01, NV-03)"
+  },
+  "MobilePlaceholder": {
+    "gu": "મોબાઈલ (વૈકલ્પિક)",
+    "hi": "मोबाइल (वैकल्पिक)",
+    "en": "Mobile (Optional)"
+  },
+  "CheckBtn": {
+    "gu": "તપાસો →",
+    "hi": "देखें →",
+    "en": "Check →"
+  },
+  "CheckingDuesText": {
+    "gu": "તપાસી રહ્યા છીએ...",
+    "hi": "जाँच कर रहे हैं...",
+    "en": "Checking dues..."
+  },
+  "HouseNotFoundTitle": {
+    "gu": "ઘર નંબર મળ્યો નથી",
+    "hi": "घर नंबर नहीं मिला",
+    "en": "House Number Not Found"
+  },
+  "HouseNotFoundDesc": {
+    "gu": "દાખલ કરેલ ઘર નંબર રેકોર્ડમાં મળ્યો નથી. મહેરબાની કરીને સાચો ઘર નંબર દાખલ કરો અથવા પંચાયત કચેરીનો સંપર્ક કરો.",
+    "hi": "दर्ज किया गया घर नंबर रिकॉर्ड में नहीं मिला। कृपया सही घर नंबर दर्ज करें या पंचायत कार्यालय से संपर्क करें।",
+    "en": "Entered house number was not found in records. Please enter a valid house number or visit the Panchayat office."
+  },
+  "PendingDuesBreakdownTitle": {
+    "gu": "બાકી કર વિગત:",
+    "hi": "बकाया कर विवरण:",
+    "en": "Pending Taxes Breakdown:"
+  },
+  "PrincipalAmountLabel": {
+    "gu": "મૂળ રકમ:",
+    "hi": "मूल राशि:",
+    "en": "Principal Amount:"
+  },
+  "LateFeeLabel": {
+    "gu": "લેટ ફી:",
+    "hi": "लेट फीस:",
+    "en": "Late Fee:"
+  },
+  "PayAtOfficeNote": {
+    "gu": "કર ભરવા માટે પંચાયત કચેરીની મુલાકાત લો",
+    "hi": "कर भुगतान के लिए पंचायत कार्यालय आएं",
+    "en": "Visit the Panchayat office to make your payment"
+  },
+  "AllPaidTitle": {
+    "gu": "તમારો તમામ કર ભરાઈ ગયેલ છે!",
+    "hi": "आपका संपूर्ण कर भुगतान हो चुका है!",
+    "en": "All your taxes are fully paid!"
+  },
+  "AllPaidDesc": {
+    "gu": "આ ઘર પર હાલ કોઈ બાકી લેણું નથી. સમયસર કર ભરવા બદલ આપનો આભાર!",
+    "hi": "इस घर पर वर्तमान में कोई बकाया नहीं है। समय पर कर भरने के लिए धन्यवाद!",
+    "en": "No pending dues on this house. Thank you for paying your taxes on time!"
+  },
+  "FaqBadge": {
+    "gu": "પ્રશ્નોત્તરી",
+    "hi": "प्रश्नोत्तरी",
+    "en": "FAQ"
+  },
+  "FaqTitle": {
+    "gu": "વારંવાર પૂછાતા પ્રશ્નો",
+    "hi": "अक्सर पूछे जाने वाले सवाल",
+    "en": "Frequently Asked Questions"
+  },
+  "TabAll": {
+    "gu": "બધા",
+    "hi": "सभी",
+    "en": "All"
+  },
+  "TabGeneral": {
+    "gu": "સામાન્ય",
+    "hi": "सामान्य",
+    "en": "General"
+  },
+  "TabTax": {
+    "gu": "કર નિયમો",
+    "hi": "कर नियम",
+    "en": "Tax Rules"
+  },
+  "TabPayment": {
+    "gu": "ચુકવણી",
+    "hi": "भुगतान",
+    "en": "Payments"
+  },
+  "TabReceipt": {
+    "gu": "પહોંચ",
+    "hi": "रसीद",
+    "en": "Receipt"
+  },
+  "FaqQ1": {
+    "gu": "01. મારો બાકી કર હું કેવી રીતે જાણી શકું?",
+    "hi": "01. मैं अपना बकाया कर कैसे जान सकता हूँ?",
+    "en": "01. How can I check my pending dues?"
+  },
+  "FaqA1": {
+    "gu": "આ વેબસાઇટ પર ઉપર આપેલા 'મારો કર તપાસો' બોક્સમાં તમારો ઘર નંબર (જેમ કે PF-01, NV-03) દાખલ કરીને તરત જ તમારો તમામ બાકી કર, ચાલુ વર્ષનું બિલ અને લેટ ફી વિગતવાર જોઈ શકો છો.",
+    "hi": "इस वेबसाइट पर ऊपर दिए गए 'अपना कर देखें' बॉक्स में अपना घर नंबर (जैसे PF-01, NV-03) दर्ज करके तुरंत अपना संपूर्ण बकाया कर और लेट फीस देख सकते हैं।",
+    "en": "Enter your house number (such as PF-01, NV-03) in the 'Check My Dues' box above to immediately view your itemized pending taxes, annual bill, and computed late fees."
+  },
+  "FaqQ2": {
+    "gu": "02. લેટ ફી (વિલંબ શુલ્ક) કેવી રીતે ગણવામાં આવે છે?",
+    "hi": "02. लेट फीस (विलंब शुल्क) की गणना कैसे की जाती है?",
+    "en": "02. How is late fee calculated?"
+  },
+  "FaqA2": {
+    "gu": "નાણાકીય વર્ષની છેલ્લી તારીખ (31 માર્ચ) પછી કર ન ભરવામાં આવે તો દર મહિને 2% લેખે લેટ ફી આપોઆપ સિસ્ટમ દ્વારા ગણાય છે. સફાઈ અને દિવાબત્તી કર માટે એક વખત ફ્લેટ ₹50 લેટ ફી લેવામાં આવે છે.",
+    "hi": "वित्तीय वर्ष की अंतिम तिथि (31 मार्च) के बाद कर जमा न होने पर 2% प्रति माह की दर से लेट फीस स्वचालित रूप से जोड़ी जाती है। सफाई एवं रोशनी कर के लिए एकमुश्त ₹50 लेट फीस निर्धारित है।",
+    "en": "If dues remain unpaid after the due date (31st March), a late fee of 2% per month is automatically computed by the system. For sanitation and lighting, a flat late fee of ₹50 applies."
+  },
+  "FaqQ3": {
+    "gu": "03. શું હું અંશતઃ (હપ્તેથી) કર ભરી શકું?",
+    "hi": "03. क्या मैं आंशिक (किश्तों में) भुगतान कर सकता हूँ?",
+    "en": "03. Can I pay my dues in installments or partial amounts?"
+  },
+  "FaqA3": {
+    "gu": "હા! તમે ઇચ્છો તેટલી રકમ હપ્તેથી ભરી શકો છો. પંચાયત સોફ્ટવેર પહેલા જૂની લેટ ફી અને ત્યારબાદ જૂના વર્ષના મૂળ કરમાં આપોઆપ રકમ ફાળવી આપે છે.",
+    "hi": "हाँ! आप अपनी सुविधानुसार आंशिक राशि जमा कर सकते हैं। सिस्टम पहले पुरानी लेट फीस और उसके बाद पुराने वर्ष के मूल कर में राशि समायोजित करता है।",
+    "en": "Yes! Partial payments are accepted. The system automatically allocates your payment to clear late fees first and oldest pending principal next."
+  },
+  "FaqQ4": {
+    "gu": "04. પહોંચ ખોવાઈ જાય તો ફરીથી કેવી રીતે મળી શકે?",
+    "hi": "04. रसीद खो जाने पर दोबारा कैसे प्राप्त करें?",
+    "en": "04. How do I get a duplicate receipt if lost?"
+  },
+  "FaqA4": {
+    "gu": "પંચાયત કચેરીમાં તમારો ઘર નંબર આપવાથી તલાટી કમ મંત્રી સિસ્ટમમાંથી જૂની કોઈપણ પહોંચની બીજી નકલ (ડુપ્લિકેટ પહોંચ) તરત પ્રિન્ટ કરી આપે છે.",
+    "hi": "पंचायत कार्यालय में अपना घर नंबर बताने पर तलाटी कम मंत्री सिस्टम से पुरानी रसीद की दूसरी प्रति (डुप्लिकेट रसीद) तुरंत प्रिंट कर देंगे।",
+    "en": "Provide your house number at the Panchayat office, and the clerk can instantly retrieve and reprint any past receipt from the system."
+  },
+  "FooterDesc": {
+    "gu": "ગ્રામ પંચાયત કર તથા ફી વસૂલાત અને હિસાબ પ્રણાલી. સરળ, સચોટ અને પારદર્શક વહીવટ.",
+    "hi": "ग्राम पंचायत कर एवं शुल्क वसूली प्रणाली। सरल, सटीक एवं पारदर्शी प्रशासन।",
+    "en": "Gram Panchayat tax and fee collection tracking system. Simple, accurate and transparent rural governance."
+  },
+  "OfficeHeading": {
+    "gu": "પંચાયત કચેરી",
+    "hi": "पंचायत कार्यालय",
+    "en": "Panchayat Office"
+  },
+  "OfficeAddressDefault": {
+    "gu": "પંચાયત ભવન, મુખ્ય બજાર, આણંદપર - 360003",
+    "hi": "पंचायत भवन, मुख्य बाजार, आनंदपर - 360003",
+    "en": "Panchayat Bhavan, Main Market, Anandpar - 360003"
+  },
+  "OfficeTimingsDefault": {
+    "gu": "સોમ થી શનિ: સવારે 10:00 થી સાંજે 5:00",
+    "hi": "सोम से शनि: सुबह 10:00 से शाम 5:00",
+    "en": "Mon to Sat: 10:00 AM to 5:00 PM"
+  },
+  "OfficeHelpline": {
+    "gu": "હેલ્પલાઇન",
+    "hi": "हेल्पलाइन",
+    "en": "Helpline"
+  },
+  "CheckDuesFooter": {
+    "gu": "મારો કર તપાસો",
+    "hi": "अपना कर देखें",
+    "en": "Check My Dues"
+  },
+  "FooterHint": {
+    "gu": "માત્ર ઘર નંબર દાખલ કરી બાકી રકમ જાણો.",
+    "hi": "सिर्फ घर नंबर दर्ज करके बकाया राशि जानें।",
+    "en": "Enter house number to check pending balance."
+  },
+  "Copyright": {
+    "gu": "ગ્રામ પંચાયત આણંદપર (ગ્રામ કર સહાયક). સર્વાધિકાર સુરક્ષિત.",
+    "hi": "ग्राम पंचायत आनंदपर (ग्राम कर सहायक)। सर्वाधिकार सुरक्षित।",
+    "en": "Gram Panchayat Anandpar (Gram Kar Sahayak). All rights reserved."
+  },
+  "GovCampaign": {
+    "gu": "ડિજિટલ ગ્રામીણ સુશાસન અભિયાન",
+    "hi": "डिजिटल ग्रामीण सुशासन अभियान",
+    "en": "Digital Rural Good Governance Initiative"
+  },
+  "LoginPageTitle": {
+    "gu": "પંચાયત લૉગિન",
+    "hi": "पंचायत लॉगिन",
+    "en": "Panchayat Login"
+  },
+  "LoginPageSubtitle": {
+    "gu": "ગ્રામ પંચાયત આણંદપર કર સહાયક પોર્ટલ",
+    "hi": "ग्राम पंचायत आनंदपर कर सहायक पोर्टल",
+    "en": "Gram Panchayat Anandpar Tax Tracker Portal"
+  },
+  "UsernameLabel": {
+    "gu": "વપરાશકર્તા નામ",
+    "hi": "उपयोगकर्ता नाम",
+    "en": "Username"
+  },
+  "UsernamePlaceholder": {
+    "gu": "દા.ત. admin અથવા sarpanch",
+    "hi": "उदा. admin या sarpanch",
+    "en": "e.g. admin or sarpanch"
+  },
+  "PasswordLabel": {
+    "gu": "પાસવર્ડ",
+    "hi": "पासवर्ड",
+    "en": "Password"
+  },
+  "PasswordPlaceholder": {
+    "gu": "પાસવર્ડ દાખલ કરો",
+    "hi": "पासवर्ड दर्ज करें",
+    "en": "Enter password"
+  },
+  "LoginSubmitBtn": {
+    "gu": "લૉગિન કરો",
+    "hi": "लॉगिन करें",
+    "en": "Sign In"
+  },
+  "QuickDemoTitle": {
+    "gu": "ઝડપી લૉગિન ખાતા (ડેમો):",
+    "hi": "त्वरित लॉगिन खाते (डेमो):",
+    "en": "Quick Demo Accounts:"
+  },
+  "TalatiAdminBtn": {
+    "gu": "તલાટી (એડમિન)",
+    "hi": "तलाटी (व्यवस्थापक)",
+    "en": "Clerk (Admin)"
+  },
+  "SarpanchViewerBtn": {
+    "gu": "સરપંચ (દર્શક)",
+    "hi": "सरपंच (दर्शक)",
+    "en": "Sarpanch (Viewer)"
+  },
+  "InvalidLoginMsg": {
+    "gu": "અમાન્ય વપરાશકર્તા નામ અથવા પાસવર્ડ",
+    "hi": "अमान्य उपयोगकर्ता नाम या पासवर्ड",
+    "en": "Invalid username or password"
+  },
+  "AccessDeniedTitle": {
+    "gu": "પ્રવેશ પ્રતિબંધિત",
+    "hi": "प्रवेश प्रतिबंधित",
+    "en": "Access Denied"
+  },
+  "AccessDeniedDesc": {
+    "gu": "આ પેજ ખોલવા અથવા ફેરફાર કરવા માટે આપના એકાઉન્ટને મંજૂરી નથી. સરપંચ રોલ માત્ર અહેવાલ અને માહિતી જોવા માટે છે.",
+    "hi": "इस पृष्ठ को खोलने या बदलाव करने की अनुमति आपके खाते को नहीं है। सरपंच पद केवल रिपोर्ट और जानकारी देखने के लिए है।",
+    "en": "You do not have permission to access or modify this page. The Sarpanch role is read-only for reports and summaries."
+  },
+  "BackToDashboard": {
+    "gu": "ડેશબોર્ડ પર પાછા જાઓ",
+    "hi": "डैशबोर्ड पर वापस जाएं",
+    "en": "Return to Dashboard"
+  },
+  "CollectedToday": {
+    "gu": "આજની વસૂલાત",
+    "hi": "आज की वसूली",
+    "en": "Collected Today"
+  },
+  "CollectedThisYear": {
+    "gu": "આ વર્ષની કુલ વસૂલાત",
+    "hi": "इस वर्ष कुल वसूली",
+    "en": "Collected This Year"
+  },
+  "TotalPending": {
+    "gu": "કુલ બાકી કર",
+    "hi": "कुल बकाया कर",
+    "en": "Total Pending"
+  },
+  "DefaulterHouses": {
+    "gu": "બાકીદાર ઘરોની સંખ્યા",
+    "hi": "बकायादार घरों की संख्या",
+    "en": "Defaulter Households"
+  },
+  "HousesOutOf": {
+    "gu": "ઘરો",
+    "hi": "घर",
+    "en": "houses"
+  },
+  "CollectionProgress": {
+    "gu": "વસૂલાત પૂર્ણતા લક્ષ્યાંક",
+    "hi": "वसूली पूर्णता लक्ष्य",
+    "en": "Collection Progress Target"
+  },
+  "CollectionPctLabel": {
+    "gu": "વસૂલાત પૂર્ણતા:",
+    "hi": "वसूली पूर्णता:",
+    "en": "Collection Achieved:"
+  },
+  "CollectedLabel": {
+    "gu": "વસૂલ:",
+    "hi": "वसूली:",
+    "en": "Collected:"
+  },
+  "PendingLabel": {
+    "gu": "બાકી:",
+    "hi": "बकाया:",
+    "en": "Pending:"
+  },
+  "QuickActions": {
+    "gu": "ઝડપી સેવાઓ",
+    "hi": "त्वरित सेवाएं",
+    "en": "Quick Actions"
+  },
+  "RecordPaymentTileDesc": {
+    "gu": "કર વસૂલો અને પહોંચ આપો →",
+    "hi": "कर वसूलें और रसीद दें →",
+    "en": "Collect dues & print receipt →"
+  },
+  "PendingListTileDesc": {
+    "gu": "બાકીદારોની યાદી અને CSV →",
+    "hi": "बकायादारों की सूची और CSV →",
+    "en": "Defaulter list & CSV export →"
+  },
+  "HouseholdsTileDesc": {
+    "gu": "તમામ મિલકતો અને માલિકો →",
+    "hi": "सभी संपत्तियां और मालिक →",
+    "en": "All properties and owners →"
+  },
+  "TaxSettingsTileDesc": {
+    "gu": "કરના દર અને નવા વર્ષની માંગણી →",
+    "hi": "कर की दरें और नए वर्ष की मांग →",
+    "en": "Tax rates & yearly demands →"
+  },
+  "RecentPayments": {
+    "gu": "તાજેતરની વસૂલાત",
+    "hi": "हाल के भुगतान",
+    "en": "Recent Payments"
+  },
+  "ViewAllReceipts": {
+    "gu": "બધી પહોંચ જુઓ →",
+    "hi": "सभी रसीदें देखें →",
+    "en": "View All Receipts →"
+  },
+  "NoPaymentsYet": {
+    "gu": "હજુ સુધી કોઈ ચુકવણી નોંધાયેલ નથી.",
+    "hi": "अभी तक कोई भुगतान दर्ज नहीं हुआ है।",
+    "en": "No payments recorded yet."
+  },
+  "HouseholdsPageSubtitle": {
+    "gu": "ગામની તમામ મિલકતો અને કરદાતાઓની યાદી",
+    "hi": "गांव की सभी संपत्तियों और करदाताओं की सूची",
+    "en": "List of all village properties and registered taxpayers"
+  },
+  "AddHousehold": {
+    "gu": "+ નવું ઘર ઉમેરો",
+    "hi": "+ नया घर जोड़ें",
+    "en": "+ Add Household"
+  },
+  "SearchHouseholdPlaceholder": {
+    "gu": "ઘર નંબર, માલિકનું નામ અથવા મોબાઇલ...",
+    "hi": "घर नंबर, मालिक का नाम या मोबाइल...",
+    "en": "House number, owner name or mobile..."
+  },
+  "AllWards": {
+    "gu": "તમામ વોર્ડ / ફળિયા",
+    "hi": "सभी वार्ड / फलिया",
+    "en": "All Wards / Areas"
+  },
+  "FatherOrHusband": {
+    "gu": "પિતા/પતિ:",
+    "hi": "पिता/पति:",
+    "en": "Father/Husband:"
+  },
+  "WaterConnectionCol": {
+    "gu": "પાણી જોડાણ",
+    "hi": "पानी कनेक्शन",
+    "en": "Water Connection"
+  },
+  "PendingAmountCol": {
+    "gu": "બાકી રકમ",
+    "hi": "बकाया राशि",
+    "en": "Pending Amount"
+  },
+  "OverdueBadge": {
+    "gu": "મુદત વીતી",
+    "hi": "अवधि समाप्त",
+    "en": "Overdue"
+  },
+  "ClearedBadge": {
+    "gu": "ચૂકતે",
+    "hi": "पूर्ण चुकता",
+    "en": "Cleared"
+  },
+  "NoHouseholdsFound": {
+    "gu": "કોઈ ઘર મળ્યું નથી.",
+    "hi": "कोई घर नहीं मिला।",
+    "en": "No households found."
+  },
+  "CollectBtn": {
+    "gu": "વસૂલો",
+    "hi": "वसूली",
+    "en": "Collect"
+  },
+  "ViewReceiptBtn": {
+    "gu": "પહોંચ",
+    "hi": "रसीद",
+    "en": "Receipt"
+  },
+  "AddHouseholdSubtitle": {
+    "gu": "નવા કરદાતા ઘર અથવા દુકાનની નોંધણી કરો",
+    "hi": "नए करदाता घर या दुकान का पंजीकरण करें",
+    "en": "Register a new taxpayer house or shop"
+  },
+  "EditHouseholdSubtitle": {
+    "gu": "કરદાતા મિલકતની વિગતો સુધારો",
+    "hi": "करदाता संपत्ति का विवरण सुधारें",
+    "en": "Update taxpayer property details"
+  },
+  "HouseNo": {
+    "gu": "ઘર નંબર",
+    "hi": "घर नंबर",
+    "en": "House No."
+  },
+  "OwnerName": {
+    "gu": "માલિકનું પૂરું નામ",
+    "hi": "मालिक का पूरा नाम",
+    "en": "Owner Full Name"
+  },
+  "GuardianName": {
+    "gu": "પિતા અથવા પતિનું નામ",
+    "hi": "पिता या पति का नाम",
+    "en": "Father or Husband Name"
+  },
+  "Mobile": {
+    "gu": "મોબાઈલ નંબર",
+    "hi": "मोबाइल नंबर",
+    "en": "Mobile Number"
+  },
+  "Ward": {
+    "gu": "વોર્ડ / ફળિયું",
+    "hi": "वार्ड / फलिया",
+    "en": "Ward / Area"
+  },
+  "PropertyType": {
+    "gu": "મિલકતનો પ્રકાર",
+    "hi": "संपत्ति का प्रकार",
+    "en": "Property Type"
+  },
+  "Residential": {
+    "gu": "રહેણાંક",
+    "hi": "आवासीय",
+    "en": "Residential"
+  },
+  "Shop": {
+    "gu": "દુકાન / વ્યાપારી",
+    "hi": "दुकान / व्यापारिक",
+    "en": "Commercial Shop"
+  },
+  "Other": {
+    "gu": "અન્ય",
+    "hi": "अन्य",
+    "en": "Other"
+  },
+  "HasWaterLabel": {
+    "gu": "નળ કનેક્શન સુવિધા",
+    "hi": "नल कनेक्शन सुविधा",
+    "en": "Piped Water Connection"
+  },
+  "PropertyDetailsTitle": {
+    "gu": "મિલકત વિગત",
+    "hi": "संपत्ति विवरण",
+    "en": "Property Details"
+  },
+  "TotalPayableHeading": {
+    "gu": "કુલ ભરવાપાત્ર બાકી રકમ",
+    "hi": "कुल देय बकाया राशि",
+    "en": "Total Payable Outstanding Balance"
+  },
+  "PrincipalShort": {
+    "gu": "મૂળ:",
+    "hi": "मूल:",
+    "en": "Principal:"
+  },
+  "LateFeeShort": {
+    "gu": "લેટ ફી:",
+    "hi": "लेट फीस:",
+    "en": "Late Fee:"
+  },
+  "DemandsSectionTitle": {
+    "gu": "કર અને માંગણી વિગત",
+    "hi": "कर एवं मांग विवरण",
+    "en": "Tax Demands & Computed Dues"
+  },
+  "PaymentHistorySectionTitle": {
+    "gu": "ચુકવણી ઇતિહાસ",
+    "hi": "भुगतान इतिहास",
+    "en": "Payment History"
+  },
+  "TaxNameCol": {
+    "gu": "કરનું નામ",
+    "hi": "कर का नाम",
+    "en": "Tax Name"
+  },
+  "FinYearCol": {
+    "gu": "નાણાકીય વર્ષ",
+    "hi": "वित्तीय वर्ष",
+    "en": "Financial Year"
+  },
+  "PrincipalCol": {
+    "gu": "મૂળ રકમ",
+    "hi": "मूल राशि",
+    "en": "Principal Amount"
+  },
+  "DueDateCol": {
+    "gu": "છેલ્લી તારીખ",
+    "hi": "अंतिम तिथि",
+    "en": "Due Date"
+  },
+  "PaidPrincipalCol": {
+    "gu": "ચુકવેલ મૂળ",
+    "hi": "भुगतान मूल",
+    "en": "Paid Principal"
+  },
+  "CalculatedLateFeeCol": {
+    "gu": "ગણતરી કરેલ લેટ ફી",
+    "hi": "गणना की गई लेट फीस",
+    "en": "Computed Late Fee"
+  },
+  "MonthsLateText": {
+    "gu": "મહિના વિલંબ",
+    "hi": "महीने विलंब",
+    "en": "months overdue"
+  },
+  "DefaulterBadge": {
+    "gu": "બાકીદાર",
+    "hi": "बकायादार",
+    "en": "Defaulter"
+  },
+  "PendingBadge": {
+    "gu": "બાકી",
+    "hi": "बकाया",
+    "en": "Pending"
+  },
+  "PaidBadge": {
+    "gu": "ચુકવાઈ ગયેલ",
+    "hi": "भुगतान हो गया",
+    "en": "Paid"
+  },
+  "PartialBadge": {
+    "gu": "અંશતઃ ચૂકવેલ",
+    "hi": "आंशिक भुगतान",
+    "en": "Partial"
+  },
+  "CancelledBadge": {
+    "gu": "રદ કરેલ",
+    "hi": "रद्द किया गया",
+    "en": "Cancelled"
+  },
+  "ReceiptNoCol": {
+    "gu": "પહોંચ નંબર",
+    "hi": "रसीद संख्या",
+    "en": "Receipt No."
+  },
+  "DateCol": {
+    "gu": "તારીખ",
+    "hi": "दिनांक",
+    "en": "Date"
+  },
+  "AmountCol": {
+    "gu": "રકમ",
+    "hi": "राशि",
+    "en": "Amount"
+  },
+  "PaymentModeCol": {
+    "gu": "ચુકવણી પદ્ધતિ",
+    "hi": "भुगतान माध्यम",
+    "en": "Payment Mode"
+  },
+  "RefCol": {
+    "gu": "સંદર્ભ / વિગત",
+    "hi": "संदर्भ / विवरण",
+    "en": "Reference / Details"
+  },
+  "ClerkCol": {
+    "gu": "વસૂલ કરનાર",
+    "hi": "वसूली कर्ता",
+    "en": "Received By"
+  },
+  "RecordPaymentSubtitle": {
+    "gu": "કર વસૂલાત નોંધણી, ફાળવણી અને ત્વરિત પહોંચ",
+    "hi": "कर वसूली प्रविष्टि, आबंटन और तुरंत रसीद",
+    "en": "Tax collection entry, payment allocation and instant receipt"
+  },
+  "Step1PaymentTitle": {
+    "gu": "ઘર પસંદ કરો",
+    "hi": "घर चुनें",
+    "en": "Find Household"
+  },
+  "Step1PaymentSubtitle": {
+    "gu": "ઘર નંબર અથવા મોબાઈલ દાખલ કરો",
+    "hi": "घर नंबर या मोबाइल दर्ज करें",
+    "en": "Enter house number or mobile"
+  },
+  "FindBtn": {
+    "gu": "શોધો",
+    "hi": "खोजें",
+    "en": "Find"
+  },
+  "PickFromListBtn": {
+    "gu": "ઘર યાદીમાંથી પસંદ કરો",
+    "hi": "घर सूची से चुनें",
+    "en": "Pick from Households List"
+  },
+  "Step2PaymentTitle": {
+    "gu": "બાકી કર વિગત",
+    "hi": "बकाया कर विवरण",
+    "en": "Current Dues & Late Fees"
+  },
+  "Step2PaymentSubtitle": {
+    "gu": "સ્વયંસંચાલિત લેટ ફી સાથે કુલ લેણું",
+    "hi": "स्वचालित लेट फीस सहित कुल देय",
+    "en": "Itemized breakdown with computed late fees"
+  },
+  "Step3PaymentTitle": {
+    "gu": "ચુકવણી સ્વીકારો",
+    "hi": "भुगतान स्वीकार करें",
+    "en": "Receive Payment"
+  },
+  "Step3PaymentSubtitle": {
+    "gu": "રકમ અને ચુકવણીનો પ્રકાર પસંદ કરો",
+    "hi": "राशि और भुगतान माध्यम चुनें",
+    "en": "Select amount and payment mode"
+  },
+  "PaymentAmountLabel": {
+    "gu": "ચુકવણીની રકમ (₹)",
+    "hi": "भुगतान राशि (₹)",
+    "en": "Payment Amount (₹)"
+  },
+  "FullAmountBtn": {
+    "gu": "પૂરેપૂરી રકમ",
+    "hi": "पूरी राशि",
+    "en": "Full Amount"
+  },
+  "PartialAllowedNote": {
+    "gu": "અંશતઃ (હપ્તેથી) ચુકવણી પણ માન્ય છે.",
+    "hi": "आंशिक (किश्तों में) भुगतान भी मान्य है।",
+    "en": "Partial payments are fully supported."
+  },
+  "ModeCash": {
+    "gu": "રોકડ",
+    "hi": "नकद",
+    "en": "Cash"
+  },
+  "ModeUPI": {
+    "gu": "યુપીઆઈ",
+    "hi": "यूपीआई",
+    "en": "UPI"
+  },
+  "ModeCheque": {
+    "gu": "ચેક",
+    "hi": "चेक",
+    "en": "Cheque"
+  },
+  "RefInputLabel": {
+    "gu": "સંદર્ભ / ટ્રાન્ઝેક્શન નંબર (યુપીઆઈ અથવા ચેક)",
+    "hi": "संदर्भ / लेनदेन संख्या (यूपीआई या चेक)",
+    "en": "Reference / Transaction ID (UPI or Cheque)"
+  },
+  "RefInputPlaceholder": {
+    "gu": "દા.ત. UPI-921820 અથવા CHQ-810291",
+    "hi": "उदा. UPI-921820 या CHQ-810291",
+    "en": "e.g. UPI-921820 or CHQ-810291"
+  },
+  "SaveAndPrintBtn": {
+    "gu": "કર સ્વીકારો અને પહોંચ બનાવો",
+    "hi": "कर स्वीकारें और रसीद बनाएं",
+    "en": "Save Payment & Generate Receipt"
+  },
+  "NoDuesOnHouse": {
+    "gu": "આ ઘર પર કોઈ બાકી કર નથી!",
+    "hi": "इस घर पर कोई बकाया कर नहीं है!",
+    "en": "No pending dues on this household!"
+  },
+  "AllYearsPaidDesc": {
+    "gu": "તમામ વર્ષોના કર પૂરેપૂરા ભરાઈ ગયેલ છે.",
+    "hi": "सभी वर्षों के कर पूरी तरह से चुकाए जा चुके हैं।",
+    "en": "All taxes for all financial years are fully paid."
+  },
+  "ReceiptViewTitle": {
+    "gu": "કર વસૂલાત પહોંચ",
+    "hi": "कर वसूली रसीद",
+    "en": "Tax Collection Receipt"
+  },
+  "PrintReceiptBtn": {
+    "gu": "પહોંચ પ્રિન્ટ કરો",
+    "hi": "रसीद प्रिंट करें",
+    "en": "Print Receipt"
+  },
+  "CancelReceiptBtn": {
+    "gu": "પહોંચ રદ કરો",
+    "hi": "रદ રસીદ करें",
+    "en": "Cancel Receipt"
+  },
+  "CancelledBanner": {
+    "gu": "આ પહોંચ રદ કરેલ છે",
+    "hi": "यह रसीद रद्द की गई है",
+    "en": "THIS RECEIPT HAS BEEN CANCELLED"
+  },
+  "CancelReasonLabel": {
+    "gu": "કારણ:",
+    "hi": "कारण:",
+    "en": "Reason:"
+  },
+  "StateGujarat": {
+    "gu": "ગુજરાત",
+    "hi": "गुजरात",
+    "en": "Gujarat"
+  },
+  "FormNo4": {
+    "gu": "નમૂનો નં. ૪",
+    "hi": "प्रारूप सं. ४",
+    "en": "Form No. 4"
+  },
+  "Rule24": {
+    "gu": "(નિયમ ૨૪ અન્વયે)",
+    "hi": "(नियम २४ के अंतर्गत)",
+    "en": "(Under Rule 24)"
+  },
+  "ReceiptParticulars": {
+    "gu": "કરની વિગત",
+    "hi": "कर का विवरण",
+    "en": "Particulars"
+  },
+  "TotalReceived": {
+    "gu": "કુલ ચૂકવેલ રકમ:",
+    "hi": "कुल प्राप्त राशि:",
+    "en": "TOTAL RECEIVED:"
+  },
+  "InWordsLabel": {
+    "gu": "અંકે રૂપિયા:",
+    "hi": "शब्दों में रुपये:",
+    "en": "Amount in Words:"
+  },
+  "RemainingBalanceAfterReceipt": {
+    "gu": "આ ચુકવણી પછી ઘર પર બાકી રહેતી રકમ:",
+    "hi": "इस भुगतान के बाद शेष बकाया राशि:",
+    "en": "Outstanding balance remaining on this house:"
+  },
+  "TaxpayerSign": {
+    "gu": "કરદાતાની સહી",
+    "hi": "करदाता के हस्ताक्षर",
+    "en": "Taxpayer's Signature"
+  },
+  "AuthorizedSign": {
+    "gu": "તલાટી કમ મંત્રી / અધિકૃત સહી",
+    "hi": "तलाटी कम मंत्री / अधिकृत हस्ताक्षर",
+    "en": "Talati-cum-Mantri / Authorized Sign"
+  },
+  "CancelModalTitle": {
+    "gu": "પહોંચ રદ કરો",
+    "hi": "रसीद रद्द करें",
+    "en": "Cancel Receipt"
+  },
+  "CancelModalDesc": {
+    "gu": "આ પહોંચ રદ કરવાથી તમામ રકમ ફરીથી બાકી કરમાં જોડાઈ જશે. રદ કરવાનું ચોક્કસ કારણ જણાવો:",
+    "hi": "इस रसीद को रद्द करने पर पूरी राशि पुनः बकाया में जुड़ जाएगी। रद्द करने का कारण दर्ज करें:",
+    "en": "Cancelling this receipt will restore the full amount to pending dues. Please provide a cancellation reason:"
+  },
+  "DefaultersPageSubtitle": {
+    "gu": "મુદત વીતી ગયેલ અને બાકી કર ધરાવતા ઘરોની સચોટ યાદી",
+    "hi": "अवधि समाप्त एवं बकाया कर वाले घरों की सटीक सूची",
+    "en": "Verified list of households with overdue pending dues and late fees"
+  },
+  "MinAmountFilter": {
+    "gu": "ઓછામાં ઓછી રકમ (₹)",
+    "hi": "न्यूनतम राशि (₹)",
+    "en": "Min Amount (₹)"
+  },
+  "SortByLabel": {
+    "gu": "ક્રમબદ્ધ",
+    "hi": "क्रमबद्ध",
+    "en": "Sort By"
+  },
+  "SortHighest": {
+    "gu": "સૌથી વધુ બાકી રકમ",
+    "hi": "अधिकतम बकाया राशि",
+    "en": "Highest Pending Amount"
+  },
+  "SortLowest": {
+    "gu": "સૌથી ઓછી બાકી રકમ",
+    "hi": "न्यूनतम बकाया राशि",
+    "en": "Lowest Pending Amount"
+  },
+  "SortOldest": {
+    "gu": "સૌથી જૂનો બાકી કર",
+    "hi": "सबसे पुराना बकाया कर",
+    "en": "Oldest Due Date"
+  },
+  "DefaulterSummaryHeading": {
+    "gu": "બાકીદાર અહેવાલ સારાંશ:",
+    "hi": "बकायादार रिपोर्ट सारांश:",
+    "en": "DEFAULTER REPORT SUMMARY:"
+  },
+  "TotalPendingAmountSummary": {
+    "gu": "કુલ બાકી રકમ:",
+    "hi": "कुल बकाया राशि:",
+    "en": "Total Pending Amount:"
+  },
+  "FromHousesCount": {
+    "gu": "ઘરો પાસેથી",
+    "hi": "घरों से",
+    "en": "from households"
+  },
+  "IncludedLateFee": {
+    "gu": "જેમાં સમાવિષ્ટ લેટ ફી:",
+    "hi": "जिसमें सम्मिलित लेट फीस:",
+    "en": "Included Late Fee Amount:"
+  },
+  "DaysOverdueBadge": {
+    "gu": "દિવસ",
+    "hi": "दिन",
+    "en": "days"
+  },
+  "TaxSettingsSubtitle": {
+    "gu": "વાર્ષિક કર દરો, વિલંબ શુલ્ક (Late Fee) અને નવા નાણાકીય વર્ષની માંગણી",
+    "hi": "वार्षिक कर दरें, विलंब शुल्क (Late Fee) और नए वित्तीय वर्ष की मांग",
+    "en": "Annual tax rates, late fee rules and new financial year demand generation"
+  },
+  "PanchayatProfileBtn": {
+    "gu": "પંચાયત & સરપંચ વિગતો →",
+    "hi": "पंचायत एवं सरपंच विवरण →",
+    "en": "Panchayat & Sarpanch Details →"
+  },
+  "NewYearCardBadge": {
+    "gu": "નવા વર્ષની શરૂઆત",
+    "hi": "नए वर्ष की शुरुआत",
+    "en": "New Financial Year"
+  },
+  "NewYearCardTitle": {
+    "gu": "નવા નાણાકીય વર્ષના કર જનરેટ કરો",
+    "hi": "नए वित्तीय वर्ष के कर जनरेट करें",
+    "en": "Generate Dues for New Financial Year"
+  },
+  "NewYearCardDesc": {
+    "gu": "ગામના તમામ સક્રિય ઘરો માટે લાગુ પડતા તમામ કરની વાર્ષિક માંગણીઓ આપોઆપ તૈયાર થશે. (ડુપ્લિકેટ બનશે નહીં).",
+    "hi": "गांव के सभी सक्रिय घरों के लिए लागू करों की वार्षिक मांग स्वतः तैयार होगी। (डुप्लिकेट नहीं बनेगी)।",
+    "en": "Automatically creates yearly demands for all active households without duplicates."
+  },
+  "ConfiguredTaxesTitle": {
+    "gu": "સક્રિય કર નિયમો",
+    "hi": "सक्रिय कर नियम",
+    "en": "Configured Tax Rules"
+  },
+  "AnnualRateLabel": {
+    "gu": "વાર્ષિક દર",
+    "hi": "वार्षिक दर",
+    "en": "Annual Rate"
+  },
+  "DueEveryYear": {
+    "gu": "દર વર્ષે છેલ્લી તારીખ:",
+    "hi": "प्रति वर्ष अंतिम तिथि:",
+    "en": "Annual Due Date:"
+  },
+  "LateFeeRuleLabel": {
+    "gu": "લેટ ફી નિયમ:",
+    "hi": "लेट फीस नियम:",
+    "en": "Late Fee Rule:"
+  },
+  "AppliesToLabel": {
+    "gu": "કોને લાગુ પડે:",
+    "hi": "किन्हें लागू है:",
+    "en": "Applies To:"
+  },
+  "AppliesAll": {
+    "gu": "ગામના તમામ ઘરો",
+    "hi": "गांव के सभी घर",
+    "en": "All Village Households"
+  },
+  "AppliesWater": {
+    "gu": "માત્ર નળ કનેક્શન હોય તેવા ઘરો",
+    "hi": "केवल नल कनेक्शन वाले घर",
+    "en": "Water Connection Only"
+  },
+  "AppliesShop": {
+    "gu": "માત્ર વ્યાપારી દુકાનો",
+    "hi": "केवल व्यापारिक दुकानें",
+    "en": "Commercial Shops Only"
+  },
+  "EditTaxBtn": {
+    "gu": "કર અને લેટ ફીના નિયમ સુધારો",
+    "hi": "कर और लेट फीस के नियम सुधारें",
+    "en": "Edit Tax & Late Fee Rules"
+  },
+  "EditTaxSubtitle": {
+    "gu": "વાર્ષિક રકમ, છેલ્લી તારીખ અને લેટ ફી ગણતરી પદ્ધતિ",
+    "hi": "वार्षिक राशि, अंतिम तिथि और लेट फीस गणना पद्धति",
+    "en": "Annual amount, due date and late fee calculation method"
+  },
+  "DueDayLabel": {
+    "gu": "છેલ્લી તારીખ (દિવસ)",
+    "hi": "अंतिम तिथि (दिन)",
+    "en": "Due Day of Month"
+  },
+  "DueMonthLabel": {
+    "gu": "છેલ્લો મહિનો",
+    "hi": "अंतिम महीना",
+    "en": "Due Month"
+  },
+  "LateFeeMethodLabel": {
+    "gu": "લેટ ફી પદ્ધતિ",
+    "hi": "लेट फीस पद्धति",
+    "en": "Late Fee Calculation Method"
+  },
+  "MethodPercent": {
+    "gu": "ટકાવારી દર મહિને (% દર મહિને)",
+    "hi": "प्रतिशत प्रति माह (% प्रति माह)",
+    "en": "Percentage per month (%/month)"
+  },
+  "MethodFlat": {
+    "gu": "ફિક્સ એક વખત (ફ્લેટ ફી)",
+    "hi": "एकमुश्त निर्धारित (फ्लैट फीस)",
+    "en": "Fixed One-Time (Flat Fee)"
+  },
+  "LateFeeRateLabel": {
+    "gu": "લેટ ફી દર (% અથવા ₹)",
+    "hi": "लेट फीस दर (% या ₹)",
+    "en": "Late Fee Rate (% or ₹)"
+  },
+  "MaxCapLabel": {
+    "gu": "મહત્તમ લેટ ફી કેપ (મૂળ રકમના % માં)",
+    "hi": "अधिकतम लेट फीस सीमा (मूल राशि के % में)",
+    "en": "Max Late Fee Cap (% of principal)"
+  },
+  "MaxCapHint": {
+    "gu": "મૂળ રકમના 50% થી વધુ લેટ ફી ન વધે તે માટે કેપ (0 એટલે કેપ વગર).",
+    "hi": "मूल राशि के 50% से अधिक लेट फीस न बढ़े इसलिए सीमा (0 अर्थात असीमित)।",
+    "en": "Caps late fee at specified % of principal (0 for no cap)."
+  },
+  "PanchayatSettingsSubtitle": {
+    "gu": "વેબસાઇટ મુખ્ય પેજ અને પહોંચ પર દર્શાવવામાં આવતી વિગતો બદલો",
+    "hi": "वेबसाइट मुख्य पृष्ठ और रसीद पर दिखाई जाने वाली जानकारी बदलें",
+    "en": "Update details displayed on the landing page and official receipts"
+  },
+  "PanchayatFullNameLabel": {
+    "gu": "પંચાયતનું પૂરું નામ",
+    "hi": "पंचायत का पूरा नाम",
+    "en": "Full Panchayat Name"
+  },
+  "VillageNameLabel": {
+    "gu": "ગામનું નામ",
+    "hi": "गांव का नाम",
+    "en": "Village Name"
+  },
+  "CurrentFYLabel": {
+    "gu": "ચાલુ નાણાકીય વર્ષ",
+    "hi": "वर्तमान वित्तीय वर्ष",
+    "en": "Current Financial Year"
+  },
+  "TalukaLabel": {
+    "gu": "તાલુકો",
+    "hi": "तालुका",
+    "en": "Taluka / Block"
+  },
+  "DistrictLabel": {
+    "gu": "જિલ્લો",
+    "hi": "ज़िला",
+    "en": "District"
+  },
+  "SarpanchInfoSection": {
+    "gu": "સરપંચશ્રીની માહિતી",
+    "hi": "सरपंच जी की जानकारी",
+    "en": "Sarpanch Information"
+  },
+  "SarpanchNameLabel": {
+    "gu": "સરપંચશ્રીનું નામ",
+    "hi": "सरपंच जी का नाम",
+    "en": "Sarpanch Full Name"
+  },
+  "SarpanchMessageLabel": {
+    "gu": "સરપંચશ્રીનો સંદેશ",
+    "hi": "सरपंच जी का संदेश",
+    "en": "Sarpanch's Message"
+  },
+  "OfficeContactSection": {
+    "gu": "પંચાયત કચેરી & સંપર્ક",
+    "hi": "पंचायत कार्यालय एवं संपर्क",
+    "en": "Panchayat Office & Contact"
+  },
+  "OfficeAddressLabel": {
+    "gu": "કચેરીનું સરનામું",
+    "hi": "कार्यालय का पता",
+    "en": "Office Address"
+  },
+  "OfficeTimingsLabel": {
+    "gu": "કચેરીનો સમય",
+    "hi": "कार्यालय का समय",
+    "en": "Office Timings"
+  },
+  "OfficePhoneLabel": {
+    "gu": "ફોન નંબર",
+    "hi": "फ़ोन नंबर",
+    "en": "Phone Number"
+  },
+  "Amount": {
+    "gu": "રકમ",
+    "hi": "राशि",
+    "en": "Amount"
+  },
+  "Cancelled": {
+    "gu": "રદ કરેલ",
+    "hi": "रद्द किया गया",
+    "en": "Cancelled"
+  },
+  "Date": {
+    "gu": "તારીખ",
+    "hi": "दिनांक",
+    "en": "Date"
+  },
+  "EditHousehold": {
+    "gu": "મિલકત વિગત સુધારો",
+    "hi": "मकान विवरण सुधारें",
+    "en": "Edit Household"
+  },
+  "FinancialYear": {
+    "gu": "નાણાકીય વર્ષ",
+    "hi": "वित्तीय वर्ष",
+    "en": "Financial Year"
+  },
+  "GenerateDues": {
+    "gu": "માંગણી જનરેટ કરો",
+    "hi": "मांग जनरेट करें",
+    "en": "Generate Dues"
+  },
+  "LateFee": {
+    "gu": "લેટ ફી",
+    "hi": "लेट फीस",
+    "en": "Late Fee"
+  },
+  "Paid": {
+    "gu": "ચૂકતે",
+    "hi": "पूर्ण भुगतान",
+    "en": "Paid"
+  },
+  "PaymentMode": {
+    "gu": "ચુકવણી પદ્ધતિ",
+    "hi": "भुगतान माध्यम",
+    "en": "Payment Mode"
+  },
+  "ReceiptNo": {
+    "gu": "પહોંચ નંબર",
+    "hi": "रसीद संख्या",
+    "en": "Receipt No."
+  },
+  "TotalPayable": {
+    "gu": "કુલ ભરવાપાત્ર રકમ",
+    "hi": "कुल देय राशि",
+    "en": "Total Payable"
+  },
+  "AllYears": {
+    "gu": "તમામ વર્ષો",
+    "hi": "सभी वर्ष",
+    "en": "All Years"
+  },
+  "AllTaxes": {
+    "gu": "તમામ કર",
+    "hi": "सभी कर",
+    "en": "All Taxes"
+  },
+  "TaxType": {
+    "gu": "કરનો પ્રકાર",
+    "hi": "कर का प्रकार",
+    "en": "Tax Type"
+  },
+  "TaxBreakdownCol": {
+    "gu": "કર-વાર બાકી વિગત",
+    "hi": "कर-वार बकाया विवरण",
+    "en": "Itemized Tax Breakdown"
+  },
+  "OldestDueCol": {
+    "gu": "જૂની મુદત",
+    "hi": "पुरानी अंतिम तिथि",
+    "en": "Oldest Due Date"
+  },
+  "NoDefaultersFound": {
+    "gu": "પસંદ કરેલ ફિલ્ટરમાં કોઈ બાકીદાર ઘર મળ્યું નથી.",
+    "hi": "चयनित फ़िल्टर में कोई बकायादार घर नहीं मिला।",
+    "en": "No defaulter households found for selected filters."
+  },
+  "DefaultersRegisterTitle": {
+    "gu": "બાકી કર અને લેટ ફી વસૂલાત રજિસ્ટર",
+    "hi": "बकाया कर एवं लेट फीस वसूली रजिस्टर",
+    "en": "Defaulters & Late Fee Register"
+  },
+  "ReportDate": {
+    "gu": "અહેવાલ તારીખ",
+    "hi": "रिपोर्ट दिनांक",
+    "en": "Report Date"
+  },
+  "FilterYear": {
+    "gu": "નાણાકીય વર્ષ",
+    "hi": "वित्तीय वर्ष",
+    "en": "Financial Year"
+  },
+  "TotalDefaulterHouses": {
+    "gu": "કુલ બાકીદાર ઘરો",
+    "hi": "कुल बकायादार घर",
+    "en": "Total Defaulter Houses"
+  },
+  "TotalPendingLateFee": {
+    "gu": "કુલ બાકી લેટ ફી",
+    "hi": "कुल बकाया लेट फीस",
+    "en": "Total Pending Late Fee"
+  },
+  "TotalCollectablePending": {
+    "gu": "કુલ વસૂલવાપાત્ર બાકી રકમ",
+    "hi": "कुल वसूली योग्य बकाया राशि",
+    "en": "Total Collectable Dues"
+  },
+  "PreparedByClerk": {
+    "gu": "તૈયાર કરનાર ક્લાર્ક",
+    "hi": "तैयारकर्ता क्लर्क",
+    "en": "Prepared by Clerk"
+  },
+  "TalatiSign": {
+    "gu": "તલાટી કમ મંત્રી",
+    "hi": "तलाटी कम मंत्री",
+    "en": "Talati-cum-Mantri"
+  },
+  "SarpanchSignatureSeal": {
+    "gu": "સરપંચશ્રીની સહી / સિક્કો",
+    "hi": "सरपंच जी के हस्ताक्षर / मुहर",
+    "en": "Sarpanch Signature / Seal"
+  },
+  "Close": {
+    "gu": "બંધ કરો",
+    "hi": "बंद करें",
+    "en": "Close"
+  },
+  "AnnualAmountLabel": {
+    "gu": "વાર્ષિક રકમ",
+    "hi": "वार्षिक राशि",
+    "en": "Annual Amount"
+  },
+  "Month1": {
+    "gu": "જાન્યુઆરી",
+    "hi": "जनवरी",
+    "en": "January"
+  },
+  "Month2": {
+    "gu": "ફેબ્રુઆરી",
+    "hi": "फ़रवरी",
+    "en": "February"
+  },
+  "Month3": {
+    "gu": "માર્ચ (નાણાકીય વર્ષ અંત)",
+    "hi": "मार्च (वित्तीय वर्ष अंत)",
+    "en": "March (Financial Year End)"
+  },
+  "Month4": {
+    "gu": "એપ્રિલ",
+    "hi": "अप्रैल",
+    "en": "April"
+  },
+  "Month5": {
+    "gu": "મે",
+    "hi": "मई",
+    "en": "May"
+  },
+  "Month6": {
+    "gu": "જૂન",
+    "hi": "जून",
+    "en": "June"
+  },
+  "Month7": {
+    "gu": "જુલાઈ",
+    "hi": "जुलाई",
+    "en": "July"
+  },
+  "Month8": {
+    "gu": "ઓગસ્ટ",
+    "hi": "अगस्त",
+    "en": "August"
+  },
+  "Month9": {
+    "gu": "સપ્ટેમ્બર",
+    "hi": "सितंबर",
+    "en": "September"
+  },
+  "Month10": {
+    "gu": "ઓક્ટોબર",
+    "hi": "अक्टूबर",
+    "en": "October"
+  },
+  "Month11": {
+    "gu": "નવેમ્બર",
+    "hi": "नवंबर",
+    "en": "November"
+  },
+  "Month12": {
+    "gu": "ડિસેમ્બર",
+    "hi": "दिसंबर",
+    "en": "December"
+  },
+  "PanchayatSettingsTitle": {
+    "gu": "પંચાયત અને સરપંચ વિગતો",
+    "hi": "पंचायत एवं सरपंच विवरण",
+    "en": "Panchayat & Sarpanch Details"
+  },
+  "BackToTaxRules": {
+    "gu": "કર નિયમો પર પાછા જાઓ",
+    "hi": "कर नियमों पर वापस जाएं",
+    "en": "Back to Tax Rules"
+  },
+  "SaveSettings": {
+    "gu": "વિગતો સાચવો",
+    "hi": "विवरण सुरक्षित करें",
+    "en": "Save Settings"
+  },
+  "AllocationPreview": {
+    "gu": "ફાળવણી પૂર્વાવલોકન",
+    "hi": "आबंटन पूर्वावलोकन",
+    "en": "Payment Allocation Preview"
+  },
+  "PendingLateFeeCol": {
+    "gu": "બાકી લેટ ફી",
+    "hi": "बकाया लेट फीस",
+    "en": "Pending Late Fee"
+  },
+  "PayingLateFeeCol": {
+    "gu": "ચૂકવાતી લેટ ફી",
+    "hi": "भुगतान लेट फीस",
+    "en": "Paying Late Fee"
+  },
+  "PendingPrincipalCol": {
+    "gu": "બાકી મૂળ રકમ",
+    "hi": "बकाया मूल राशि",
+    "en": "Pending Principal"
+  },
+  "PayingPrincipalCol": {
+    "gu": "ચૂકવાતી મૂળ રકમ",
+    "hi": "भुगतान मूल राशि",
+    "en": "Paying Principal"
+  },
+  "TotalAllocatedCol": {
+    "gu": "કુલ ફાળવણી",
+    "hi": "कुल आबंटन",
+    "en": "Total Allocated"
+  },
+  "NoPendingDues": {
+    "gu": "કોઈ બાકી રકમ નથી",
+    "hi": "कोई बकाया राशि नहीं",
+    "en": "No pending dues"
+  },
+  "TotalPaymentLabel": {
+    "gu": "કુલ ચુકવણી",
+    "hi": "कुल भुगतान",
+    "en": "Total Payment"
+  },
+  "RemainingBalanceAfterLabel": {
+    "gu": "ચુકવણી પછી બાકી રહેશે",
+    "hi": "भुगतान के बाद शेष रहेगा",
+    "en": "Balance Remaining After Payment"
+  },
+  "ErrorTryAgain": {
+    "gu": "કંઈક ખોટું થયું છે. મહેરબાની કરીને ફરી પ્રયાસ કરો.",
+    "hi": "कुछ गलत हुआ। कृपया पुनः प्रयास करें।",
+    "en": "Something went wrong. Please try again."
+  },
+  "DefaultersReportBadge": {
+    "gu": "બાકીદાર અહેવાલ",
+    "hi": "बकायादार रिपोर्ट",
+    "en": "Defaulters Report"
+  },
+  "PayOnlineViaUpi": {
+    "gu": "ઓનલાઇન યુપીઆઈથી ભરો",
+    "hi": "ऑनलाइन यूपीआई से भुगतान करें",
+    "en": "Pay Online via UPI"
+  },
+  "ScanUpiQrCode": {
+    "gu": "યુપીઆઈ ક્યુઆર કોડ સ્કેન કરો",
+    "hi": "यूपीआई क्यूआर कोड स्कैन करें",
+    "en": "Scan UPI QR Code"
+  },
+  "PanchayatUpiId": {
+    "gu": "પંચાયત સત્તાવાર યુપીઆઈ આઈડી",
+    "hi": "पंचायत आधिकारिक यूपीआई आईडी",
+    "en": "Official Panchayat UPI ID"
+  },
+  "PayerName": {
+    "gu": "નામ (ચુકવનાર)",
+    "hi": "भुगतानकर्ता का नाम",
+    "en": "Payer Full Name"
+  },
+  "PayerMobile": {
+    "gu": "મોબાઇલ નંબર (પહોંચ SMS માટે)",
+    "hi": "मोबाइल नंबर (रसीद एसएमएस हेतु)",
+    "en": "Mobile Number (For Receipt SMS)"
+  },
+  "PaymentAmount": {
+    "gu": "ચુકવણી રકમ (₹)",
+    "hi": "भुगतान राशि (₹)",
+    "en": "Payment Amount (₹)"
+  },
+  "UtrNo": {
+    "gu": "યુપીઆઈ રેફરન્સ / UTR નંબર",
+    "hi": "यूपीआई संदर्भ / UTR नंबर",
+    "en": "UPI Ref / UTR Number"
+  },
+  "ConfirmAndGetReceipt": {
+    "gu": "ચુકવણી કન્ફર્મ કરો અને પહોંચ મેળવો",
+    "hi": "भुगतान कन्फर्म करें और रसीद पाएं",
+    "en": "Confirm Payment & Get Receipt"
+  },
+  "InstantReceiptNote": {
+    "gu": "ચુકવણી સફળ થતાં જ આપની પાકી પંચાયત ડિજિટલ પહોંચ તરત જ જનરેટ થશે.",
+    "hi": "भुगतान सफल होते ही आपकी आधिकारिक पंचायत डिजिटल रसीद तुरंत प्राप्त होगी।",
+    "en": "Official digital receipt will be generated immediately upon confirmation."
+  },
+  "CopyUpi": {
+    "gu": "કૉપિ",
+    "hi": "कॉपी",
+    "en": "Copy"
+  },
+  "Copied": {
+    "gu": "કૉપિ થઈ ગયું!",
+    "hi": "कॉपी हो गया!",
+    "en": "Copied!"
+  },
+  "OpenUpiApps": {
+    "gu": "મોબાઇલ એપથી સીધું ભરો (GPay / PhonePe / Paytm / BHIM)",
+    "hi": "मोबाइल ऐप से सीधे भरें (GPay / PhonePe / Paytm / BHIM)",
+    "en": "Pay Directly with UPI App (GPay / PhonePe / Paytm / BHIM)"
+  },
+  "SimulatePaymentHelp": {
+    "gu": "ડેમો ચકાસણી માટે સીધું 'કન્ફર્મ કરો' બટન દબાવો.",
+    "hi": "डेमो परीक्षण हेतु सीधे 'कन्फर्म करें' बटन दबाएं।",
+    "en": "For quick demo testing, click 'Confirm' directly."
+  },
+  "ProcessingPayment": {
+    "gu": "ચુકવણી પ્રોસેસ થઈ રહી છે...",
+    "hi": "भुगतान प्रोसेस हो रहा है...",
+    "en": "Processing Payment..."
+  }
+}

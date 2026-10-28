@@ -1,0 +1,94 @@
+@model GramKar.Models.ViewModels.TaxSettingsViewModel
+@{
+    ViewData["Title"] = Loc["TaxSettings"];
+}
+
+<div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
+    <div>
+        <h1 style="font-size: 32px; margin: 0;">@Loc["TaxSettings"]</h1>
+        <div style="color: var(--muted); font-size: 16px;">@Loc["TaxSettingsSubtitle"]</div>
+    </div>
+    <a asp-action="Panchayat" class="btn-brutal btn-turmeric-brutal">
+        @Loc["PanchayatProfileBtn"]
+    </a>
+</div>
+
+<!-- 1. Highlighted Generate Dues Card -->
+<div class="card-brutal card-brutal-turmeric" style="padding: 28px; margin-bottom: 30px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; align-items: center;">
+        <div>
+            <span class="chip-brutal chip-paid" style="margin-bottom: 8px;">@Loc["NewYearCardBadge"]</span>
+            <h2 style="font-size: 26px; margin: 4px 0 8px 0;">@Loc["NewYearCardTitle"]</h2>
+            <p style="margin: 0; font-size: 16px; color: #333;">
+                @Loc["NewYearCardDesc"]
+            </p>
+        </div>
+
+        <div>
+            <form asp-action="GenerateDues" method="post" onsubmit="return confirm('Generate dues for new financial year?');">
+                @Html.AntiForgeryToken()
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <input type="text" name="financialYear" value="@Model.TargetFinancialYear" placeholder="2026-27"
+                           class="form-input-brutal" style="flex: 1; min-height: 50px; font-weight: 800; font-size: 19px;" required />
+                    <button type="submit" class="btn-brutal btn-success-brutal" style="min-height: 50px;">
+                        @Loc["GenerateDues"]
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- 2. Tax Types List -->
+<h2 style="font-size: 26px; margin-bottom: 18px;">@Loc["ConfiguredTaxesTitle"]</h2>
+<div class="grid-2">
+    @foreach (var tax in Model.TaxTypes)
+    {
+        <div class="card-brutal" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px;">
+                    <div>
+                        <h3 style="margin: 0; font-size: 22px; font-weight: 800;">@Loc.LocalizeTaxName(tax.Name)</h3>
+                        <span class="chip-brutal @(tax.IsActive ? "chip-paid" : "chip-cancelled")" style="font-size: 12px; margin-top: 6px;">
+                            @(tax.IsActive ? Loc["Active"] : Loc["Inactive"])
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 24px; font-weight: 800; color: var(--primary);">
+                            ₹@tax.DefaultAmount.ToString("N0")
+                        </div>
+                        <div style="font-size: 13px; color: var(--muted); font-weight: 600;">@Loc["AnnualRateLabel"]</div>
+                    </div>
+                </div>
+
+                <div style="background-color: var(--bg); border: 2px solid #111; border-radius: 10px; padding: 14px; margin-bottom: 16px; font-size: 15px;">
+                    <div style="margin-bottom: 6px;">
+                        @Loc["DueEveryYear"] <strong>@tax.DueDay/@tax.DueMonth</strong>
+                    </div>
+                    <div style="margin-bottom: 6px;">
+                        @Loc["LateFeeRuleLabel"]
+                        <strong>
+                            @if (tax.LateFeeType == "Percent")
+                            {
+                                <span>@tax.LateFeeValue% (@Loc["MethodPercent"], @Loc["MaxCapLabel"]: @tax.MaxLateFeePercent%)</span>
+                            }
+                            else
+                            {
+                                <span>₹@tax.LateFeeValue (@Loc["MethodFlat"])</span>
+                            }
+                        </strong>
+                    </div>
+                    <div>
+                        @Loc["AppliesToLabel"] <strong>@(tax.AppliesTo == "Water" ? Loc["AppliesWater"] : tax.AppliesTo == "Shop" ? Loc["AppliesShop"] : Loc["AppliesAll"])</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <a asp-action="EditTaxType" asp-route-id="@tax.TaxTypeId" class="btn-brutal btn-sm-brutal btn-turmeric-brutal" style="width: 100%;">
+                    @Loc["EditTaxBtn"]
+                </a>
+            </div>
+        </div>
+    }
+</div>
