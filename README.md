@@ -39,6 +39,10 @@ The public-facing landing page allows any village resident to look up their pend
 
 ![Citizen Portal and Dues Search](docs/screenshots/01_home_page.png)
 
+Entering a house number (e.g. `GT-07`) renders an instant itemized breakdown of past and current financial year assessments, accumulated late fees, and a direct UPI payment button:
+
+![Citizen Dues Lookup Result](docs/screenshots/01b_citizen_dues_lookup.png)
+
 ---
 
 ### 3.2 Real-Time Executive Dashboard
@@ -65,7 +69,7 @@ Complete register of village properties across all wards (*Patel Faliya, Gam Tal
 ### 3.5 Property Dues Statement & Demand History
 Detailed statement of an individual household showing all historical demand assessments, principal balance, late fee compounding, payment records, and net outstanding balance.
 
-![Household Statement](docs/screenshots/04_pending_dues_statement.png)
+![Tax Demands and Computed Dues](docs/screenshots/04_pending_dues_statement.png)
 
 ---
 
