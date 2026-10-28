@@ -48,38 +48,52 @@ Provides the Sarpanch and Talati-cum-Mantri with instant visibility into recover
 
 ---
 
-### 3.3 Village Household & Property Register
+### 3.3 Recent Tax Collection Ledger
+Real-time audit log of all recorded tax collections, transaction dates, allocated amounts, and payment instruments (Cash / UPI / Cheque) with instant receipt viewing and cancellation audit actions.
+
+![Recent Tax Collections](docs/screenshots/09_recent_payments.png)
+
+---
+
+### 3.4 Village Household & Property Register
 Complete register of village properties across all wards (*Patel Faliya, Gam Talav, Nava Vas, Mandir Chowk*). Supports property status management (Active / Inactive), water connection tracking, and instant navigation to household dues statements.
 
 ![Household Property Register](docs/screenshots/03_households_directory.png)
 
 ---
 
-### 3.4 Property Dues Statement & Demand History
+### 3.5 Property Dues Statement & Demand History
 Detailed statement of an individual household showing all historical demand assessments, principal balance, late fee compounding, payment records, and net outstanding balance.
 
 ![Household Statement](docs/screenshots/04_pending_dues_statement.png)
 
 ---
 
-### 3.5 Tax Collection & Real-Time Allocation (Step 1 to 3)
+### 3.6 Tax Collection & Real-Time Allocation (Step 1 to 3)
 Interactive collection workflow featuring fuzzy household lookup (supports variations like `GT-01`, `gt01`, mobile, or owner name), itemized overdue breakdown, partial payment support, and live dynamic allocation preview.
 
 ![Tax Collection & Dynamic Allocation](docs/screenshots/05_record_payment.png)
 
 ---
 
-### 3.6 Statutory Receipt Generation (Panchayat Form No. 4, Rule 24)
+### 3.7 Statutory Receipt Generation (Panchayat Form No. 4, Rule 24)
 Standardized government-format tax collection receipt featuring the official emblem, taluka/district headers, itemized tax allocation, payment mode, unique sequential receipt number, and printer-ready CSS styles (`window.print()`).
 
 ![Official Form No. 4 Receipt](docs/screenshots/06_official_receipt.png)
 
 ---
 
-### 3.7 Citizen Digital UPI Payment Drawer
+### 3.8 Citizen Digital UPI Payment Drawer
 Integrated online UPI QR payment flow allowing citizens to pay dues remotely, verify transaction references, and download stamped digital payment confirmations.
 
 ![Citizen Digital Payment](docs/screenshots/07_citizen_online_upi.png)
+
+---
+
+### 3.9 Rural Good Governance & Warli Visual Identity
+Every page incorporates authentic Gujarati cultural motifs, including the traditional Warli border strip, official Panchayat office timings, and localized helpline access.
+
+![Warli Art & Footer](docs/screenshots/10_footer_warli.png)
 
 ---
 
